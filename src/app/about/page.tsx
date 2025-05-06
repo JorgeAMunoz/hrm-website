@@ -1,8 +1,7 @@
-
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
-import { Award, Building, Users, CheckSquare } from 'lucide-react';
+import { Award, Building, Users, CheckSquare, Phone, MapPin } from 'lucide-react'; // Added Phone import
 import { SiteConfig } from '@/config/site';
 import { ServiceAreaMap } from '@/components/service-area-map';
 
