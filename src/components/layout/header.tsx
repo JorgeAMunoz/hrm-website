@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import { Button } from '@/components/ui/button';
+import { Button, buttonVariants } from '@/components/ui/button'; // Import buttonVariants
 import { Phone, Menu } from 'lucide-react';
 import { NavigationMenu } from '@/components/layout/navigation-menu';
 import { SiteConfig } from '@/config/site';
@@ -13,6 +13,7 @@ import {
   SheetTrigger,
   SheetClose, // Import SheetClose
 } from "@/components/ui/sheet"
+import { cn } from '@/lib/utils'; // Import cn
 
 
 export function Header() {
@@ -69,13 +70,17 @@ export function Header() {
                            </Link>
                         </SheetClose>
                      ))}
-                      {/* Mobile Call Button */}
+                      {/* Mobile Call Button - Fixed nested asChild */}
                       <SheetClose asChild>
-                         <Button asChild className="w-full cta-button mt-4">
-                            <a href={`tel:${SiteConfig.phoneNumber.replace(/\D/g, '')}`}>
-                              <Phone className="mr-2 h-4 w-4" /> Call Now
-                            </a>
-                         </Button>
+                         <a
+                            href={`tel:${SiteConfig.phoneNumber.replace(/\D/g, '')}`}
+                            className={cn(
+                                buttonVariants({ variant: 'default', size: 'default' }), // Apply button styles directly
+                                "w-full cta-button mt-4" // Add custom styles
+                            )}
+                         >
+                            <Phone className="mr-2 h-4 w-4" /> Call Now
+                         </a>
                       </SheetClose>
                    </nav>
                 </SheetContent>

@@ -1,6 +1,6 @@
-# Allow all user agents to crawl the site
+# Allow all user agents to crawl all content
 User-agent: *
 Allow: /
 
-# Specify the location of the sitemap
+# Specify the location of the XML sitemap for all user agents
 Sitemap: https://highrisemechanical.com/sitemap.xml

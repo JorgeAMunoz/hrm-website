@@ -5,6 +5,65 @@ import { Header } from '@/components/layout/header';
 import { Footer } from '@/components/layout/footer';
 import { Toaster } from "@/components/ui/toaster";
 import { SiteConfig } from '@/config/site';
+import Image from 'next/image'; // Import Image
+
+// Function to generate JSON-LD Schema for LocalBusiness (Plumber)
+const generateSchema = () => {
+  const schema = {
+    "@context": "https://schema.org",
+    "@type": "Plumber", // Specific type for plumbing business
+    "name": SiteConfig.name,
+    "description": SiteConfig.description,
+    "url": SiteConfig.url,
+    "telephone": SiteConfig.phoneNumber,
+    // Ensure logo.png exists in /public or update path/alt text
+    "image": `${SiteConfig.url}/logo.png`,
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": SiteConfig.addressParts.streetAddress,
+      "addressLocality": SiteConfig.addressParts.addressLocality,
+      "addressRegion": SiteConfig.addressParts.addressRegion,
+      "postalCode": SiteConfig.addressParts.postalCode,
+      "addressCountry": SiteConfig.addressParts.addressCountry
+    },
+    "geo": { // Approximate coordinates for the Bronx address
+      "@type": "GeoCoordinates",
+       // Replace with actual coordinates if available and precise location is desired
+       "latitude": "40.866657", // Approximate for Grand Concourse
+       "longitude": "-73.897000" // Approximate for Grand Concourse
+    },
+     "areaServed": SiteConfig.boroughs.map(borough => ({
+       "@type": "City",
+       "name": borough,
+       // Link to authoritative source (e.g., Wikipedia or NYC.gov page for the borough)
+       // Basic example using Wikipedia:
+       "sameAs": `https://en.wikipedia.org/wiki/${borough.replace(" ", "_").replace("The_","")}`
+     })),
+    // Use openingHoursSpecification directly for 24/7
+    "openingHoursSpecification": SiteConfig.openingHoursSpecification,
+    "priceRange": "$$", // Optional: Indicate general price range (e.g., $, $$, $$$)
+    "hasOfferCatalog": { // Define services offered for SEO
+       "@type": "OfferCatalog",
+       "name": "Plumbing and Heating Services NYC",
+       "itemListElement": [
+         // Add key services mentioned in keywords/site
+         { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Emergency Plumbing NYC" } },
+         { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Boiler Repair & Installation NYC" } },
+         { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Heating System Repair NYC" } },
+         { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Fire Sprinkler Systems NYC" } },
+         { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Drain Cleaning NYC" } },
+         { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Leak Detection NYC" } },
+         { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Water Heater Services NYC" } },
+         { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Commercial Plumbing NYC" } },
+         { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Residential Plumbing NYC" } },
+         { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Radiant Heating NYC" } },
+       ]
+     }
+  };
+
+  return JSON.stringify(schema);
+};
+
 
 export const metadata: Metadata = {
   title: {
@@ -28,7 +87,7 @@ export const metadata: Metadata = {
         url: `/og-image.png`, // Relative to metadataBase - Ensure this image exists in /public
         width: 1200,
         height: 630,
-        alt: `${SiteConfig.name} logo and NYC skyline`, // More descriptive alt text
+        alt: `${SiteConfig.name} - NYC Plumbing and Heating Services`, // More descriptive alt text
       },
     ],
   },
@@ -53,56 +112,6 @@ export const metadata: Metadata = {
   // viewport: 'width=device-width, initial-scale=1',
 };
 
-// Function to generate JSON-LD Schema
-const generateSchema = () => {
-  const schema = {
-    "@context": "https://schema.org",
-    "@type": "Plumber", // Specific type for plumbing business
-    "name": SiteConfig.name,
-    "description": SiteConfig.description,
-    "url": SiteConfig.url,
-    "telephone": SiteConfig.phoneNumber,
-    "image": `${SiteConfig.url}/logo.png`, // Placeholder: Add logo.png to /public folder
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": SiteConfig.addressParts.streetAddress,
-      "addressLocality": SiteConfig.addressParts.addressLocality,
-      "addressRegion": SiteConfig.addressParts.addressRegion,
-      "postalCode": SiteConfig.addressParts.postalCode,
-      "addressCountry": SiteConfig.addressParts.addressCountry
-    },
-    "geo": { // Approximate coordinates for the Bronx address
-      "@type": "GeoCoordinates",
-      // Replace with actual coordinates if available and precise location is desired
-       "latitude": "40.866657", // Approximate for Grand Concourse
-       "longitude": "-73.897000" // Approximate for Grand Concourse
-    },
-     "areaServed": SiteConfig.boroughs.map(borough => ({
-       "@type": "City",
-       "name": borough,
-       // Link to authoritative source (e.g., Wikipedia or NYC.gov page for the borough)
-       // Example using Wikipedia:
-       "sameAs": `https://en.wikipedia.org/wiki/${borough.replace(" ", "_").replace("The_","")}` // Basic example
-     })),
-    "openingHours": "Mo-Su 00:00-23:59", // Explicitly state 24/7 availability
-    "priceRange": "$$", // Optional: Indicate general price range (e.g., $, $$, $$$)
-    "hasOfferCatalog": { // Define services offered
-       "@type": "OfferCatalog",
-       "name": "Plumbing and Heating Services",
-       "itemListElement": [
-         // Add key services here
-         { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Boiler Repair & Installation" } },
-         { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Emergency Plumbing Services" } },
-         { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Fire Sprinkler Systems" } },
-         { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Drain Cleaning" } },
-         { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Heating System Repair" } },
-         // Add more services as needed
-       ]
-     }
-  };
-
-  return JSON.stringify(schema);
-};
 
 // Placeholder for your Google Analytics Tracking ID
 const GA_TRACKING_ID = 'G-XXXXXXXXXX'; // TODO: Replace with your actual GA4 Measurement ID
