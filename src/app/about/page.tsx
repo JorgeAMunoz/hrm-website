@@ -19,15 +19,6 @@ export const metadata: Metadata = {
 
 export default function AboutPage() {
 
-  // Placeholder values - Removed licensing/certification details
-  const teamMembers = [
-    { name: 'Technician 1', role: 'Senior Plumber', specialty: 'Boiler Systems', imageId: 1 },
-    { name: 'Technician 2', role: 'Heating Specialist', specialty: 'Radiant Heat', imageId: 2 },
-    { name: 'Technician 3', role: 'Drain Expert', specialty: 'Sewer Lines', imageId: 3 },
-    { name: 'Technician 4', role: 'Commercial Plumber', specialty: 'High-Rise Systems', imageId: 4 },
-  ];
-
-
   return (
     <div className="container mx-auto py-16 px-4 md:px-8 lg:px-16">
       <h1 className="text-4xl font-bold text-center mb-12 text-secondary text-outline">About High Rise Mechanical</h1>
@@ -86,32 +77,7 @@ export default function AboutPage() {
        {/* Use the ServiceAreaMap component */}
        <ServiceAreaMap />
 
-       {/* Optional: Team Photos Section */}
-       <section className="mb-16">
-         <h2 className="text-3xl font-semibold text-center mb-12 text-secondary">Meet Our Dedicated Team</h2>
-         <p className="text-center text-foreground/80 mb-8 max-w-xl mx-auto">Our professional technicians are the backbone of High Rise Mechanical, committed to providing expert service across NYC.</p>
-         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
-           {/* Replace placeholders with actual team member cards */}
-           {teamMembers.map((member) => (
-              <div key={member.imageId} className="text-center bg-card p-4 rounded-lg shadow border border-border/50">
-                 {/* Placeholder Image */}
-                 <Image
-                   src={`https://picsum.photos/200/200?random=${member.imageId}`} // Use color images
-                   alt={`${member.name} - ${member.role}`}
-                   data-ai-hint="professional portrait"
-                   width={150}
-                   height={150}
-                   className="rounded-full mx-auto mb-4 shadow-md object-cover border-2 border-primary/20"
-                 />
-                 {/* Placeholder Text */}
-                 <h4 className="font-semibold text-secondary">{member.name}</h4>
-                 <p className="text-sm text-muted-foreground">{member.role}</p>
-                 <p className="text-xs mt-1 text-primary">{member.specialty}</p>
-              </div>
-           ))}
-         </div>
-         <p className="text-center text-sm mt-8 text-muted-foreground">(Actual team photos coming soon!)</p>
-       </section>
+       {/* Removed Meet Our Dedicated Team Section */}
 
        {/* Optional: Clients/Partners Section (Placeholder) */}
        {/*
