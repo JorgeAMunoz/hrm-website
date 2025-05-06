@@ -5,13 +5,14 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Phone, Wrench, Heater, Droplet, Zap, ShieldCheck, Star, MapPin, CheckCircle } from 'lucide-react';
 import { SiteConfig } from '@/config/site';
+// Removed ContactForm import
 
 export const metadata: Metadata = {
   title: `NYC Plumbing & Heating Experts | 24/7 Emergency Service | ${SiteConfig.name}`,
-  description: `High Rise Mechanical: Your trusted NYC plumbing & heating experts serving all 5 boroughs. We offer 24/7 emergency repairs, boiler service, leak detection, fire sprinklers & more. Get a free estimate today!`, // Refined description
-  keywords: [...SiteConfig.keywords, "home plumbing NYC", "NYC heating company", "reliable plumber NYC", "free plumbing estimate", "emergency plumber NYC 24/7"], // Added more specific keyword
+  description: `High Rise Mechanical: Your trusted NYC plumbing & heating experts serving all 5 boroughs. We offer 24/7 emergency repairs, boiler service, leak detection, fire sprinklers & more. Get a free estimate today! ${SiteConfig.boroughs.join(', ')}.`,
+  keywords: [...SiteConfig.keywords, "home plumbing NYC", "NYC heating company", "reliable plumber NYC", "free plumbing estimate", "emergency plumber NYC 24/7"],
   alternates: {
-    canonical: '/', // Explicitly set canonical for the homepage
+    canonical: '/',
   },
 };
 
@@ -39,12 +40,12 @@ export default function Home() {
         <div className="container mx-auto relative z-10"> {/* Ensure content is above pseudo-element */}
           <h1 className="text-4xl md:text-5xl font-bold mb-4 text-white text-outline">NYC Plumbing and Heating Experts</h1>
           <p className="text-xl md:text-2xl mb-8 text-white">Available 24/7 for Emergencies</p>
-          <Button asChild size="lg" className="cta-button-accent">
+          <Button asChild size="lg" className="cta-button-accent hover:text-primary-foreground">
             <a href={`tel:${SiteConfig.phoneNumber.replace(/\D/g, '')}`}>
                <Phone className="mr-2 h-5 w-5" /> Request Emergency Service
             </a>
           </Button>
-           <p className="mt-4 text-sm"><Link href="/emergency-services" className="underline hover:text-white/80">Learn more about emergency services</Link></p>
+           <p className="mt-4 text-sm"><Link href="/emergency-services" className="underline text-white hover:text-white/80">Learn more about emergency services</Link></p>
         </div>
       </section>
 
@@ -56,7 +57,7 @@ export default function Home() {
             High Rise Mechanical is a plumbing and heating company proudly serving all five boroughs of New York City: The Bronx, Manhattan, Brooklyn, Queens, and Staten Island. We deliver high-quality residential and commercial solutions with a commitment to reliability and code compliance.
           </p>
 
-          {/* Quick Info Grid - Removed Licensed & Insured, adjusted grid */}
+          {/* Quick Info Grid */}
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 max-w-4xl mx-auto">
             <div className="flex flex-col items-center p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow bg-card border border-border/50">
               <MapPin className="w-10 h-10 mb-2 text-primary" />
@@ -90,7 +91,7 @@ export default function Home() {
                  </CardHeader>
                  <CardContent className="flex-grow flex flex-col justify-between pt-0">
                    <p className="text-foreground/70 mb-4 flex-grow">{service.description}</p>
-                   <Button asChild variant="outline" size="sm" className="mt-auto border-primary text-primary hover:bg-primary/10">
+                   <Button asChild variant="outline" size="sm" className="mt-auto border-primary text-primary hover:bg-primary/10 hover:text-primary-foreground">
                      <Link href={service.link}>Learn More</Link>
                    </Button>
                  </CardContent>
@@ -98,7 +99,7 @@ export default function Home() {
             ))}
           </div>
            <div className="text-center mt-12">
-             <Button asChild size="lg" className="cta-button">
+             <Button asChild size="lg" className="cta-button hover:text-primary-foreground">
                <Link href="/services">View All Services</Link>
              </Button>
            </div>
@@ -115,7 +116,7 @@ export default function Home() {
               <Phone className="mr-2 h-5 w-5" /> Call for Emergency Service
              </a>
           </Button>
-           <p className="mt-4 text-sm"><Link href="/emergency-services" className="underline hover:text-white/80">More Emergency Info</Link></p>
+           <p className="mt-4 text-sm"><Link href="/emergency-services" className="underline text-white hover:text-white/80">More Emergency Info</Link></p>
         </div>
       </section>
 
@@ -140,28 +141,25 @@ export default function Home() {
               </Card>
             ))}
           </div>
-           {/* Add link to Google Reviews if available */}
-           {SiteConfig.googleReviewsUrl && (
-             <div className="text-center mt-12">
-               <Button variant="link" asChild>
-                 <a href={SiteConfig.googleReviewsUrl} target="_blank" rel="noopener noreferrer">Read More Reviews on Google</a>
-               </Button>
-             </div>
-            )}
         </div>
       </section>
 
       {/* Contact Prompt Section */}
       <section className="relative py-16 px-4 md:px-8 lg:px-16 bg-muted/50 section-separator-curved-top">
         <div className="container mx-auto max-w-2xl text-center relative z-10">
-           <h2 className="text-3xl font-semibold mb-6 text-secondary">Get a Free Estimate</h2>
+           <h2 className="text-3xl font-semibold mb-6 text-secondary">Get a Free Estimate or Schedule Service</h2>
            <p className="text-lg text-foreground/80 mb-8">
-             Contact us today for a free, no-obligation quote on your plumbing or heating project.
+             Contact us today for a free, no-obligation quote or schedule non-emergency service online. We proudly serve all 5 boroughs: {SiteConfig.boroughs.join(', ')}.
            </p>
-           {/* Link to the Contact Page */}
-           <Button asChild size="lg" className="cta-button">
-             <Link href="/contact">Request Your Quote</Link>
-           </Button>
+            {/* Removed ContactForm component */}
+            <div className="flex justify-center gap-4">
+               <Button asChild size="lg" className="cta-button hover:text-primary-foreground">
+                  <a href={`tel:${SiteConfig.phoneNumber.replace(/\D/g, '')}`}>Call for an Estimate</a>
+               </Button>
+               <Button asChild size="lg" className="cta-button-secondary">
+                  <Link href="/schedule">Schedule Online</Link>
+               </Button>
+            </div>
         </div>
       </section>
     </div>
