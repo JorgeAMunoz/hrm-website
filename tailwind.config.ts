@@ -28,12 +28,12 @@ export default {
         primary: {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",
-          hover: "hsl(var(--primary-hover))", // Added hover state
+          hover: "hsl(var(--primary-hover))", // Explicit hover color
         },
         secondary: {
           DEFAULT: "hsl(var(--secondary))",
           foreground: "hsl(var(--secondary-foreground))",
-          hover: "hsl(var(--secondary-hover))", // Added hover state
+          hover: "hsl(var(--secondary-hover))", // Explicit hover color
         },
         destructive: {
           DEFAULT: "hsl(var(--destructive))",
@@ -50,7 +50,7 @@ export default {
         'accent-cta': { // Added accent-cta color definition
           DEFAULT: "hsl(var(--accent-cta))",
           foreground: "hsl(var(--accent-cta-foreground))",
-          hover: "hsl(var(--accent-cta-hover))", // Added hover state
+          hover: "hsl(var(--accent-cta-hover))", // Explicit hover color
         },
         popover: {
           DEFAULT: "hsl(var(--popover))",

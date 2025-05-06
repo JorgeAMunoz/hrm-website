@@ -16,11 +16,13 @@
     /* Primary CTA */
     --primary: 195 97% 30%; /* #027B9A - Teal Blue */
     --primary-foreground: 0 0% 100%; /* #FFFFFF */
-    --primary-hover: 195 97% 25%; /* #01566D - Darker Teal Blue */
+    --primary-hover: 195 85% 35%; /* #118DAF - Slightly lighter/less saturated teal for better contrast */
 
     /* Secondary/Headers */
     --secondary: 193 94% 12%; /* #042C35 - Dark Steel Blue */
     --secondary-foreground: 0 0% 100%; /* #FFFFFF */
+    --secondary-hover: 193 94% 18%; /* Slightly lighter Dark Steel Blue */
+
 
     /* Muted/Subtle Backgrounds/Highlights */
     --muted: 196 100% 98%; /* #F8FBFC - Very Light Soft Aqua */
@@ -33,7 +35,7 @@
     /* Accent CTA (Emergency/High Priority) - Using Primary CTA colors as per revised instructions */
     --accent-cta: 195 97% 30%; /* #027B9A - Same as primary */
     --accent-cta-foreground: 0 0% 100%; /* #FFFFFF */
-    --accent-cta-hover: 195 97% 25%; /* #01566D - Same as primary hover */
+    --accent-cta-hover: 195 85% 35%; /* #118DAF - Same as primary hover */
 
     /* Destructive (Errors, Alerts) */
     --destructive: 0 72% 51%; /* #D33C3C - Alert Red */
@@ -47,11 +49,29 @@
 
     /* Custom Aliases (optional, if needed for clarity) */
     --teal-blue-cta: 195 97% 30%;
-    --teal-blue-cta-hover: 195 97% 25%;
+    --teal-blue-cta-hover: 195 85% 35%; /* Updated */
     --dark-steel-blue-header: 193 94% 12%;
     --metallic-silver-border: 0 0% 75%;
     --soft-aqua-background: 196 100% 98%;
     --alert-red: 0 72% 51%;
+
+    /* Chart Colors */
+    --chart-1: 195 97% 30%; /* Primary Teal */
+    --chart-2: 193 94% 12%; /* Secondary Dark Blue */
+    --chart-3: 30 90% 60%;  /* Complementary Orange (Example) */
+    --chart-4: 210 40% 50%; /* Muted Blue (Example) */
+    --chart-5: 0 0% 75%;    /* Accent Silver */
+
+    /* Sidebar Colors */
+    --sidebar-background: 193 94% 12%; /* Dark Steel Blue */
+    --sidebar-foreground: 0 0% 95%; /* Light Grey */
+    --sidebar-primary: 195 97% 40%; /* Brighter Teal */
+    --sidebar-primary-foreground: 0 0% 100%; /* White */
+    --sidebar-accent: 195 97% 30%; /* Standard Teal */
+    --sidebar-accent-foreground: 0 0% 100%; /* White */
+    --sidebar-border: 193 94% 20%; /* Darker Steel Blue */
+    --sidebar-ring: 195 97% 40%; /* Brighter Teal */
+
 
     /* Dark Mode Colors (Example - Adjust as needed) */
   }
@@ -69,10 +89,11 @@
 
     --primary: 195 97% 40%; /* Lighter Teal Blue */
     --primary-foreground: 193 94% 12%; /* Dark text */
-    --primary-hover: 195 97% 35%; /* Slightly darker light teal */
+    --primary-hover: 195 85% 45%; /* Slightly lighter/less saturated teal */
 
     --secondary: 0 0% 98%; /* Light color for secondary elements */
     --secondary-foreground: 193 94% 12%;
+    --secondary-hover: 0 0% 90%; /* Slightly darker white */
 
     --muted: 193 94% 15%; /* Darker Aqua */
     --muted-foreground: 193 47% 70%; /* Lighter Aqua text */
@@ -81,8 +102,8 @@
     --accent-foreground: 0 0% 98%;
 
     --accent-cta: 195 97% 40%; /* Lighter Teal Blue */
-    --accent-cta-foreground: 193 94% 12%;
-    --accent-cta-hover: 195 97% 35%;
+    --accent-cta-foreground: 193 94% 12%; /* Dark text */
+    --accent-cta-hover: 195 85% 45%; /* Same as primary hover */
 
     --destructive: 0 63% 45%; /* Darker Red */
     --destructive-foreground: 0 0% 98%;
@@ -90,6 +111,23 @@
     --border: 0 0% 30%; /* Darker border */
     --input: 0 0% 30%;
     --ring: 195 97% 40%; /* Lighter Teal Blue ring */
+
+     /* Chart Colors Dark */
+    --chart-1: 195 97% 40%;
+    --chart-2: 0 0% 98%;
+    --chart-3: 30 80% 65%;
+    --chart-4: 210 30% 60%;
+    --chart-5: 0 0% 50%;
+
+    /* Sidebar Colors Dark */
+    --sidebar-background: 193 94% 8%; /* Dark Steel Blue */
+    --sidebar-foreground: 0 0% 95%;
+    --sidebar-primary: 195 97% 45%; /* Even Brighter Teal */
+    --sidebar-primary-foreground: 193 94% 8%;
+    --sidebar-accent: 195 97% 40%;
+    --sidebar-accent-foreground: 193 94% 8%;
+    --sidebar-border: 193 94% 15%;
+    --sidebar-ring: 195 97% 45%;
   }
 }
 
