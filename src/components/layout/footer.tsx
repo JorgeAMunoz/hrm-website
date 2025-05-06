@@ -1,11 +1,10 @@
 import Link from 'next/link';
-import { MapPin, Phone, Mail, CheckCircle } from 'lucide-react'; // Added Mail and CheckCircle
+import { MapPin, Phone, Mail, CheckCircle, Instagram } from 'lucide-react'; // Added Instagram
 import { SiteConfig } from '@/config/site';
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
-  // Example Google Reviews link - replace with actual link if available
-  const googleReviewsLink = SiteConfig.googleReviewsUrl; // Use URL from config
+  const instagramUrl = "https://www.instagram.com/hrise777"; // Added Instagram URL
 
   return (
     <footer className="bg-secondary text-secondary-foreground py-12 px-4 md:px-8 border-t border-border/20">
@@ -22,7 +21,6 @@ export function Footer() {
                <Phone className="h-4 w-4 text-primary flex-shrink-0" />
                <a href={`tel:${SiteConfig.phoneNumber.replace(/\D/g, '')}`} className="hover:text-primary">{SiteConfig.phoneNumber} (24/7 Emergency)</a>
             </div>
-            {/* Add Email if available in SiteConfig */}
             {SiteConfig.email && (
                <div className="flex items-center space-x-2">
                  <Mail className="h-4 w-4 text-primary flex-shrink-0" />
@@ -41,14 +39,12 @@ export function Footer() {
                </a>
             </div>
           </div>
-           {/* Google Reviews Link (Optional) */}
-           {googleReviewsLink && googleReviewsLink !== `https://search.google.com/local/reviews?placeid=YOUR_PLACE_ID` && ( // Only show if a real link is provided
-             <div className="mt-4">
-                <a href={googleReviewsLink} target="_blank" rel="noopener noreferrer" className="text-sm text-primary hover:underline inline-flex items-center">
-                   Read our Google Reviews <CheckCircle className="h-4 w-4 ml-1" />
-                </a>
-             </div>
-            )}
+           {/* Instagram Link */}
+           <div className="mt-4">
+              <a href={instagramUrl} target="_blank" rel="noopener noreferrer" className="text-sm text-primary hover:underline inline-flex items-center">
+                 Follow us on Instagram <Instagram className="h-4 w-4 ml-1" />
+              </a>
+           </div>
         </div>
 
         {/* Column 2: Quick Links */}
@@ -62,7 +58,7 @@ export function Footer() {
                  </Link>
                </li>
             ))}
-             {/* Add links to policy pages if they exist */}
+            {/* Add links to policy pages if they exist */}
             {/*
              <li>
                <Link href="/privacy-policy" className="hover:text-primary text-secondary-foreground/80 transition-colors">Privacy Policy</Link>
@@ -93,7 +89,7 @@ export function Footer() {
       </div>
 
       <div className="container mx-auto mt-10 pt-8 border-t border-border/20 text-center text-xs text-secondary-foreground/60">
-         &copy; {currentYear} {SiteConfig.name}. All Rights Reserved. {/* Removed License # placeholder */}
+         &copy; {currentYear} {SiteConfig.name}. All Rights Reserved.
          {/* Optional: Link to website developer */}
          {/* <p className="mt-1">Website by Your Company</p> */}
       </div>
