@@ -5,7 +5,7 @@ import { SiteConfig } from '@/config/site';
 export function Footer() {
   const currentYear = new Date().getFullYear();
   // Example Google Reviews link - replace with actual link if available
-  const googleReviewsLink = `https://search.google.com/local/reviews?placeid=YOUR_PLACE_ID`; // TODO: Replace with actual Place ID
+  const googleReviewsLink = SiteConfig.googleReviewsUrl; // Use URL from config
 
   return (
     <footer className="bg-secondary text-secondary-foreground py-12 px-4 md:px-8 border-t border-border/20">
@@ -15,7 +15,7 @@ export function Footer() {
         <div className="space-y-4">
           <h3 className="text-lg font-semibold text-white">{SiteConfig.name}</h3>
           <p className="text-sm text-secondary-foreground/80">
-            Your trusted partner for licensed and insured plumbing and heating solutions across NYC. Available 24/7 for emergencies.
+            Your trusted partner for plumbing and heating solutions across NYC. Available 24/7 for emergencies.
           </p>
           <div className="space-y-2 text-sm">
             <div className="flex items-center space-x-2">
@@ -23,14 +23,12 @@ export function Footer() {
                <a href={`tel:${SiteConfig.phoneNumber.replace(/\D/g, '')}`} className="hover:text-primary">{SiteConfig.phoneNumber} (24/7 Emergency)</a>
             </div>
             {/* Add Email if available in SiteConfig */}
-            {/*
-             {SiteConfig.email && (
+            {SiteConfig.email && (
                <div className="flex items-center space-x-2">
                  <Mail className="h-4 w-4 text-primary flex-shrink-0" />
                  <a href={`mailto:${SiteConfig.email}`} className="hover:text-primary break-all">{SiteConfig.email}</a>
                </div>
              )}
-            */}
             <div className="flex items-start space-x-2">
                <MapPin className="h-4 w-4 text-primary flex-shrink-0 mt-1" />
                <a
@@ -44,13 +42,13 @@ export function Footer() {
             </div>
           </div>
            {/* Google Reviews Link (Optional) */}
-           {/*
-           <div className="mt-4">
-              <a href={googleReviewsLink} target="_blank" rel="noopener noreferrer" className="text-sm text-primary hover:underline inline-flex items-center">
-                 Read our Google Reviews <CheckCircle className="h-4 w-4 ml-1" />
-              </a>
-           </div>
-           */}
+           {googleReviewsLink && googleReviewsLink !== `https://search.google.com/local/reviews?placeid=YOUR_PLACE_ID` && ( // Only show if a real link is provided
+             <div className="mt-4">
+                <a href={googleReviewsLink} target="_blank" rel="noopener noreferrer" className="text-sm text-primary hover:underline inline-flex items-center">
+                   Read our Google Reviews <CheckCircle className="h-4 w-4 ml-1" />
+                </a>
+             </div>
+            )}
         </div>
 
         {/* Column 2: Quick Links */}
@@ -95,7 +93,7 @@ export function Footer() {
       </div>
 
       <div className="container mx-auto mt-10 pt-8 border-t border-border/20 text-center text-xs text-secondary-foreground/60">
-         &copy; {currentYear} {SiteConfig.name}. All Rights Reserved. NYC Master Plumber Lic # [Enter License #]. {/* TODO: Add License # */}
+         &copy; {currentYear} {SiteConfig.name}. All Rights Reserved. {/* Removed License # placeholder */}
          {/* Optional: Link to website developer */}
          {/* <p className="mt-1">Website by Your Company</p> */}
       </div>

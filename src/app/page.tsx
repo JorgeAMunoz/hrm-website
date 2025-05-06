@@ -4,12 +4,11 @@ import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Phone, Wrench, Heater, Droplet, Zap, ShieldCheck, Star, MapPin, CheckCircle } from 'lucide-react';
-// Removed ContactForm import
 import { SiteConfig } from '@/config/site';
 
 export const metadata: Metadata = {
   title: `NYC Plumbing & Heating Experts | 24/7 Emergency Service | ${SiteConfig.name}`,
-  description: `High Rise Mechanical: Your trusted, licensed NYC plumbing & heating experts serving all 5 boroughs. We offer 24/7 emergency repairs, boiler service, leak detection, fire sprinklers & more. Get a free estimate today!`, // Refined description
+  description: `High Rise Mechanical: Your trusted NYC plumbing & heating experts serving all 5 boroughs. We offer 24/7 emergency repairs, boiler service, leak detection, fire sprinklers & more. Get a free estimate today!`, // Refined description
   keywords: [...SiteConfig.keywords, "home plumbing NYC", "NYC heating company", "reliable plumber NYC", "free plumbing estimate", "emergency plumber NYC 24/7"], // Added more specific keyword
   alternates: {
     canonical: '/', // Explicitly set canonical for the homepage
@@ -54,11 +53,11 @@ export default function Home() {
         <div className="container mx-auto text-center">
           <h2 className="text-3xl font-semibold mb-6 text-secondary">Your Trusted Partner in Plumbing & Heating</h2>
           <p className="text-lg text-foreground/80 max-w-3xl mx-auto mb-12">
-            High Rise Mechanical is a licensed and insured plumbing and heating company proudly serving all five boroughs of New York City: The Bronx, Manhattan, Brooklyn, Queens, and Staten Island. We deliver high-quality residential and commercial solutions with a commitment to reliability and code compliance.
+            High Rise Mechanical is a plumbing and heating company proudly serving all five boroughs of New York City: The Bronx, Manhattan, Brooklyn, Queens, and Staten Island. We deliver high-quality residential and commercial solutions with a commitment to reliability and code compliance.
           </p>
 
-          {/* Quick Info Grid */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto">
+          {/* Quick Info Grid - Removed Licensed & Insured, adjusted grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 max-w-4xl mx-auto">
             <div className="flex flex-col items-center p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow bg-card border border-border/50">
               <MapPin className="w-10 h-10 mb-2 text-primary" />
               <p className="font-medium text-secondary text-sm text-center">All 5 Boroughs Served</p>
@@ -67,11 +66,7 @@ export default function Home() {
               <Zap className="w-10 h-10 mb-2 text-primary" />
               <p className="font-medium text-secondary text-sm text-center">24/7 Emergency Availability</p>
             </div>
-             <div className="flex flex-col items-center p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow bg-card border border-border/50">
-              <ShieldCheck className="w-10 h-10 mb-2 text-primary" />
-              <p className="font-medium text-secondary text-sm text-center">Licensed & Insured</p>
-            </div>
-             <div className="flex flex-col items-center p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow bg-card border border-border/50">
+            <div className="flex flex-col items-center p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow bg-card border border-border/50">
               <CheckCircle className="w-10 h-10 mb-2 text-primary" />
               <p className="font-medium text-secondary text-sm text-center">Free Estimates Available</p>
             </div>

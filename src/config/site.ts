@@ -2,7 +2,7 @@ export type SiteConfig = typeof SiteConfig
 
 export const SiteConfig = {
   name: "High Rise Mechanical",
-  description: "High Rise Mechanical: NYC's trusted, licensed & insured plumbing and heating experts. Serving The Bronx, Manhattan, Brooklyn, Queens, & Staten Island 24/7. Residential & commercial boiler repair, fire sprinklers, drain cleaning, emergency service, and more.", // Refined description
+  description: "High Rise Mechanical: NYC's trusted plumbing and heating experts. Serving The Bronx, Manhattan, Brooklyn, Queens, & Staten Island 24/7. Residential & commercial boiler repair, fire sprinklers, drain cleaning, emergency service, and more.", // Refined description, removed licensed/insured
   author: "High Rise Mechanical",
   url: "https://highrisemechanical.com", // Replace with actual domain
   keywords: [
@@ -19,8 +19,8 @@ export const SiteConfig = {
     "heating services Queens",
     "emergency plumber Brooklyn",
     "NYC heating company", // Added more variations
-    "licensed plumber NYC",
     "plumbing quote NYC",
+    // Removed: "licensed plumber NYC", "insured plumber Bronx", "certified plumbers NYC"
   ],
   mainNav: [
     {

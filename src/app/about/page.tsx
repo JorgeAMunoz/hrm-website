@@ -2,29 +2,30 @@ import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
-import { MapPin, Award, Users, ShieldCheck, Building, CheckSquare, UserCheck } from 'lucide-react'; // Added UserCheck
+import { MapPin, Award, Users, Building, CheckSquare } from 'lucide-react';
 import { SiteConfig } from '@/config/site';
+import { ServiceAreaMap } from '@/components/service-area-map'; // Import ServiceAreaMap
 
 
 export const metadata: Metadata = {
-  title: `About Us | Licensed NYC Plumbers & Heating | ${SiteConfig.name}`,
-  description: `Learn about ${SiteConfig.name}, your trusted, licensed, and insured NYC plumbing and heating company. We proudly serve all 5 boroughs (Bronx, Manhattan, Brooklyn, Queens, Staten Island) with experienced, certified technicians committed to quality & code compliance.`, // Refined description
-  keywords: [...SiteConfig.keywords, "about High Rise Mechanical", "NYC plumbing company", "licensed plumbers NYC", "heating contractors NYC", "NYC building plumbing", "certified plumbers NYC", "insured plumber Bronx", "Bronx plumbing company"], // Added location keyword
+  title: `About Us | NYC Plumbers & Heating | ${SiteConfig.name}`,
+  description: `Learn about ${SiteConfig.name}, your trusted NYC plumbing and heating company. We proudly serve all 5 boroughs (Bronx, Manhattan, Brooklyn, Queens, Staten Island) with experienced technicians committed to quality & code compliance.`, // Refined description, removed licensed/insured
+  keywords: [...SiteConfig.keywords, "about High Rise Mechanical", "NYC plumbing company", "heating contractors NYC", "NYC building plumbing", "Bronx plumbing company"], // Removed location keyword
    alternates: {
     canonical: '/about',
   },
 };
 
 export default function AboutPage() {
-  // Placeholder values - Replace with actual data
-  const licenseNumber = "[Enter NYC Master Plumber License # Here]";
-  const certifications = [
-    "OSHA 30 Certified",
-    "Backflow Prevention Assembly Tester Certified",
-    "Relevant FDNY Certificates of Fitness (e.g., S-12, S-13)",
-    // Add more relevant certifications
+
+  // Placeholder values - Removed licensing/certification details
+  const teamMembers = [
+    { name: 'Technician 1', role: 'Senior Plumber', specialty: 'Boiler Systems', imageId: 1 },
+    { name: 'Technician 2', role: 'Heating Specialist', specialty: 'Radiant Heat', imageId: 2 },
+    { name: 'Technician 3', role: 'Drain Expert', specialty: 'Sewer Lines', imageId: 3 },
+    { name: 'Technician 4', role: 'Commercial Plumber', specialty: 'High-Rise Systems', imageId: 4 },
   ];
-  const industryAssociation = "[Industry Association Name, e.g., PHCC]"; // Optional
+
 
   return (
     <div className="container mx-auto py-16 px-4 md:px-8 lg:px-16">
@@ -55,102 +56,61 @@ export default function AboutPage() {
             className="rounded-lg shadow-lg object-cover aspect-[3/2] border border-border/50"
             priority // Load this image early if it's above the fold
           />
-           <p className="text-sm text-center mt-2 text-muted-foreground">Our licensed technicians at work.</p>
+           <p className="text-sm text-center mt-2 text-muted-foreground">Our experienced technicians at work.</p>
         </div>
       </section>
 
-      {/* Values & Expertise Section */}
+      {/* Values & Expertise Section - Removed Licensing/Insurance/Certification */}
       <section className="mb-16 bg-muted p-8 rounded-lg border border-border/50">
         <h2 className="text-3xl font-semibold text-center mb-12 text-secondary">Why Choose High Rise Mechanical?</h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8"> {/* Adjusted grid */}
            <div className="text-center p-4 bg-background rounded shadow border border-border/50">
             <Award className="w-12 h-12 mx-auto mb-4 text-primary" />
             <h3 className="text-xl font-semibold mb-2 text-secondary">Experience & Expertise</h3>
             <p className="text-foreground/70 text-sm">Decades of combined experience solving complex plumbing and heating challenges specific to NYC buildings.</p>
           </div>
            <div className="text-center p-4 bg-background rounded shadow border border-border/50">
-            <ShieldCheck className="w-12 h-12 mx-auto mb-4 text-primary" />
-            <h3 className="text-xl font-semibold mb-2 text-secondary">Licensed & Insured</h3>
-            <p className="text-foreground/70 text-sm">Fully licensed (NYC Master Plumber Lic # {licenseNumber}) and insured for your complete peace of mind.</p>
-          </div>
-           <div className="text-center p-4 bg-background rounded shadow border border-border/50">
-            <UserCheck className="w-12 h-12 mx-auto mb-4 text-primary" />
-            <h3 className="text-xl font-semibold mb-2 text-secondary">Certified Technicians</h3>
-            <p className="text-foreground/70 text-sm">Our team holds key industry certifications and undergoes continuous training for safety and skill.</p>
-          </div>
-           <div className="text-center p-4 bg-background rounded shadow border border-border/50">
             <Building className="w-12 h-12 mx-auto mb-4 text-primary" />
             <h3 className="text-xl font-semibold mb-2 text-secondary">Code Compliance</h3>
             <p className="text-foreground/70 text-sm">We strictly adhere to all NYC Department of Buildings (DOB) codes, ensuring safe, legal installations.</p>
           </div>
+          <div className="text-center p-4 bg-background rounded shadow border border-border/50">
+            <Users className="w-12 h-12 mx-auto mb-4 text-primary" />
+            <h3 className="text-xl font-semibold mb-2 text-secondary">Dedicated Team</h3>
+            <p className="text-foreground/70 text-sm">Our professional technicians are committed to providing expert service and customer satisfaction.</p>
+          </div>
         </div>
       </section>
 
-        {/* Certifications/Licenses Section */}
-      <section className="mb-16">
-        <h2 className="text-3xl font-semibold text-center mb-8 text-secondary">Our Credentials</h2>
-         <div className="max-w-3xl mx-auto bg-card p-6 rounded-lg shadow border border-border/50">
-           <ul className="list-none space-y-3 text-foreground/80">
-             <li className="flex items-start">
-                <ShieldCheck className="w-5 h-5 mr-3 text-primary flex-shrink-0 mt-1" />
-                <div><strong>NYC Master Plumber License:</strong> {licenseNumber}</div>
-             </li>
-             <li className="flex items-start">
-                <CheckSquare className="w-5 h-5 mr-3 text-primary flex-shrink-0 mt-1" />
-                <div><strong>Fully Insured:</strong> Comprehensive General Liability & Workers' Compensation</div>
-             </li>
-             <li className="flex items-start">
-                <Award className="w-5 h-5 mr-3 text-primary flex-shrink-0 mt-1" />
-                <div>
-                   <strong>Certifications:</strong>
-                   <ul className="list-disc list-inside ml-4 mt-1 text-sm space-y-1">
-                     {certifications.map((cert, index) => <li key={index}>{cert}</li>)}
-                   </ul>
-                </div>
-             </li>
-              {industryAssociation !== "[Industry Association Name, e.g., PHCC]" && ( // Only show if association is filled in
-                <li className="flex items-start">
-                  <Users className="w-5 h-5 mr-3 text-primary flex-shrink-0 mt-1" />
-                  <div><strong>Member of:</strong> {industryAssociation}</div>
-                </li>
-              )}
-           </ul>
-           <p className="text-sm mt-4 text-muted-foreground">We prioritize safety, compliance, and ongoing professional development.</p>
-         </div>
-      </section>
-
-
-      {/* Service Area Section */}
        {/* Use the ServiceAreaMap component */}
        <ServiceAreaMap />
 
        {/* Optional: Team Photos Section */}
        <section className="mb-16">
          <h2 className="text-3xl font-semibold text-center mb-12 text-secondary">Meet Our Dedicated Team</h2>
-         <p className="text-center text-foreground/80 mb-8 max-w-xl mx-auto">Our professional and certified technicians are the backbone of High Rise Mechanical, committed to providing expert service across NYC.</p>
+         <p className="text-center text-foreground/80 mb-8 max-w-xl mx-auto">Our professional technicians are the backbone of High Rise Mechanical, committed to providing expert service across NYC.</p>
          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
            {/* Replace placeholders with actual team member cards */}
-           {[1, 2, 3, 4].map((i) => (
-              <div key={i} className="text-center bg-card p-4 rounded-lg shadow border border-border/50">
+           {teamMembers.map((member) => (
+              <div key={member.imageId} className="text-center bg-card p-4 rounded-lg shadow border border-border/50">
                  {/* Placeholder Image */}
                  <Image
-                   src={`https://picsum.photos/200/200?random=${i}`} // Use color images
-                   alt={`Team Member ${i}`}
+                   src={`https://picsum.photos/200/200?random=${member.imageId}`} // Use color images
+                   alt={`${member.name} - ${member.role}`}
                    data-ai-hint="professional portrait"
                    width={150}
                    height={150}
                    className="rounded-full mx-auto mb-4 shadow-md object-cover border-2 border-primary/20"
                  />
                  {/* Placeholder Text */}
-                 <h4 className="font-semibold text-secondary">Technician Name</h4>
-                 <p className="text-sm text-muted-foreground">Role/Specialty</p>
-                 <p className="text-xs mt-1 text-primary">[Key Certification]</p>
+                 <h4 className="font-semibold text-secondary">{member.name}</h4>
+                 <p className="text-sm text-muted-foreground">{member.role}</p>
+                 <p className="text-xs mt-1 text-primary">{member.specialty}</p>
               </div>
            ))}
          </div>
          <p className="text-center text-sm mt-8 text-muted-foreground">(Actual team photos coming soon!)</p>
        </section>
-
 
        {/* Optional: Clients/Partners Section (Placeholder) */}
        {/*
@@ -175,38 +135,5 @@ export default function AboutPage() {
         </section>
 
     </div>
-  );
-}
-
-// Define ServiceAreaMap Component within the same file or import if separate
-function ServiceAreaMap() {
-  return (
-    <section className="mb-16 text-center bg-muted py-12 px-4 rounded-lg border border-border/50">
-      <h2 className="text-3xl font-semibold mb-8 text-secondary">
-         <MapPin className="inline-block w-8 h-8 mr-2 text-primary" /> Proudly Serving All Five Boroughs
-      </h2>
-       {/* Placeholder Image for Map - Replace with actual interactive map or static map image */}
-       <div className="max-w-3xl mx-auto mb-8 bg-background p-2 rounded shadow-md border border-border/50">
-         <Image
-           src="https://picsum.photos/800/400/?blur=2" // Placeholder image of a map
-           alt="Map of NYC showing service area for High Rise Mechanical"
-           data-ai-hint="NYC map boroughs"
-           width={800}
-           height={400}
-           className="rounded object-cover w-full"
-         />
-         {/* You can overlay text or icons on the map image if needed */}
-       </div>
-      <p className="text-lg text-foreground/80 max-w-2xl mx-auto mb-6">
-        Our licensed technicians provide prompt and reliable plumbing and heating solutions across the entirety of New York City.
-      </p>
-      <div className="flex flex-wrap justify-center gap-3">
-        {SiteConfig.boroughs.map((borough) => (
-           <span key={borough} className="bg-primary/10 text-primary font-medium px-4 py-2 rounded-full text-sm shadow-sm border border-primary/20">
-             {borough}
-           </span>
-        ))}
-      </div>
-    </section>
   );
 }
