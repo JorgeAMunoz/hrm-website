@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import {
-  Heater, Thermometer, Bath, Wrench, Search, Droplet, Users, Building, Home, Zap, CheckSquare, Droplets, AlertTriangle, Snowflake
+  Heater, Thermometer, Bath, Wrench, Search, Droplet, Users, Building, Home, Zap, CheckSquare, Droplets, AlertTriangle, Snowflake, Phone // Added Phone icon
 } from 'lucide-react';
 import { SiteConfig } from '@/config/site';
 
@@ -32,22 +32,22 @@ export const metadata: Metadata = {
 
 // Updated service list to better match instructions, using appropriate icons
 const services = [
-  { name: 'Boiler Installation, Repair & Maintenance', icon: Heater, description: 'Expert installation, repair, and routine maintenance for all types of boiler systems to ensure efficiency and reliability.', id: 'boilers' },
-  { name: 'Radiant Floor Heating Systems', icon: Thermometer, description: 'Design, installation, and repair of comfortable and energy-efficient radiant floor heating systems for homes and businesses.', id: 'radiant-heating' },
-  { name: 'Domestic Hot Water Systems', icon: Bath, description: 'Installation and service for domestic hot water systems, ensuring consistent hot water supply when you need it.', id: 'hot-water' },
-  { name: 'Plumbing Fixture Installation', icon: CheckSquare, description: 'Professional installation of sinks, toilets, tubs, showers, and other plumbing fixtures with precision and care.', id: 'fixtures' },
-  { name: 'Pipe Repairs & Leak Detection', icon: Search, description: 'Advanced leak detection techniques and durable pipe repairs to prevent water damage and conserve water.', id: 'pipe-repair' },
-  { name: 'Drain Clogs & Sewer Line Clearing', icon: Wrench, description: 'Fast and effective clearing of clogged drains and sewer lines using modern equipment to restore proper flow.', id: 'drain-clearing' },
-  { name: 'Water Heater Installation & Repair', icon: Droplets, description: 'Installation, repair, and maintenance services for tankless and traditional water heaters of all major brands.', id: 'water-heater' },
-  { name: 'Expansion Tank Installation & Maintenance', icon: Heater, description: 'Proper installation and maintenance of expansion tanks to protect your heating and hot water systems.', id: 'expansion-tank' }, // Reused Heater icon
-  { name: 'Heat Exchangers', icon: Thermometer, description: 'Service and installation of heat exchangers for efficient heat transfer in various HVAC and plumbing systems.', id: 'heat-exchanger' }, // Reused Thermometer icon
-  { name: 'Fire Sprinkler Systems', icon: Droplet, description: 'Design, installation, testing, and maintenance of code-compliant fire sprinkler systems for safety and protection.', id: 'fire-sprinklers' },
-  { name: 'High-Rise Building Plumbing Systems', icon: Building, description: 'Specialized expertise in managing the complex plumbing systems found in high-rise residential and commercial buildings.', id: 'high-rise' },
-  { name: 'Commercial Plumbing Systems', icon: Users, description: 'Comprehensive plumbing services tailored to the unique needs of commercial properties, including offices, retail, and industrial facilities.', id: 'commercial' },
-  { name: 'Residential Plumbing Systems', icon: Home, description: 'Reliable plumbing solutions for homeowners, covering everything from minor repairs to full system installations.', id: 'residential' },
+  { name: 'Boiler Installation, Repair & Maintenance', icon: Heater, description: 'Expert installation, repair, and routine maintenance for all types of boiler systems to ensure efficiency and reliability.', id: 'boilers', url: '/services/boiler-repair' },
+  { name: 'Radiant Floor Heating Systems', icon: Thermometer, description: 'Design, installation, and repair of comfortable and energy-efficient radiant floor heating systems for homes and businesses.', id: 'radiant-heating', url: '/services/radiant-heating' },
+  { name: 'Domestic Hot Water Systems', icon: Bath, description: 'Installation and service for domestic hot water systems, ensuring consistent hot water supply when you need it.', id: 'hot-water', url: '/services/hot-water-systems' },
+  { name: 'Plumbing Fixture Installation', icon: CheckSquare, description: 'Professional installation of sinks, toilets, tubs, showers, and other plumbing fixtures with precision and care.', id: 'fixtures', url: '/services/fixture-installation' },
+  { name: 'Pipe Repairs & Leak Detection', icon: Search, description: 'Advanced leak detection techniques and durable pipe repairs to prevent water damage and conserve water.', id: 'pipe-repair', url: '/services/leak-detection' },
+  { name: 'Drain Clogs & Sewer Line Clearing', icon: Wrench, description: 'Fast and effective clearing of clogged drains and sewer lines using modern equipment to restore proper flow.', id: 'drain-clearing', url: '/services/drain-cleaning' },
+  { name: 'Water Heater Installation & Repair', icon: Droplets, description: 'Installation, repair, and maintenance services for tankless and traditional water heaters of all major brands.', id: 'water-heater', url: '/services/water-heater-repair' },
+  { name: 'Expansion Tank Installation & Maintenance', icon: Heater, description: 'Proper installation and maintenance of expansion tanks to protect your heating and hot water systems.', id: 'expansion-tank', url: '/services/expansion-tank' }, // Reused Heater icon
+  { name: 'Heat Exchangers', icon: Thermometer, description: 'Service and installation of heat exchangers for efficient heat transfer in various HVAC and plumbing systems.', id: 'heat-exchanger', url: '/services/heat-exchanger' }, // Reused Thermometer icon
+  { name: 'Fire Sprinkler Systems', icon: Droplet, description: 'Design, installation, testing, and maintenance of code-compliant fire sprinkler systems for safety and protection.', id: 'fire-sprinklers', url: '/services/fire-sprinklers' },
+  { name: 'High-Rise Building Plumbing Systems', icon: Building, description: 'Specialized expertise in managing the complex plumbing systems found in high-rise residential and commercial buildings.', id: 'high-rise', url: '/services/high-rise-plumbing' },
+  { name: 'Commercial Plumbing Systems', icon: Users, description: 'Comprehensive plumbing services tailored to the unique needs of commercial properties, including offices, retail, and industrial facilities.', id: 'commercial', url: '/services/commercial-plumbing' },
+  { name: 'Residential Plumbing Systems', icon: Home, description: 'Reliable plumbing solutions for homeowners, covering everything from minor repairs to full system installations.', id: 'residential', url: '/services/residential-plumbing' },
   { name: 'Emergency Plumbing Services', icon: AlertTriangle, description: 'Available 24/7 for urgent plumbing issues like burst pipes, major leaks, and sewer backups across NYC.', id: 'emergency', link: '/emergency-services' }, // Added link to emergency page
   // Added missing service from instructions
-  { name: 'Frozen Pipe Thawing & Repair', icon: Snowflake, description: 'Safe and effective thawing of frozen pipes and repair of any resulting damage during cold snaps.', id: 'frozen-pipes' },
+  { name: 'Frozen Pipe Thawing & Repair', icon: Snowflake, description: 'Safe and effective thawing of frozen pipes and repair of any resulting damage during cold snaps.', id: 'frozen-pipes', url: '/services/frozen-pipes' },
 ];
 
 
@@ -65,7 +65,7 @@ export default function ServicesPage() {
             <CardHeader className="flex-shrink-0">
               <div className="flex items-center mb-3">
                  {/* Use secondary accent for icons */}
-                <service.icon className="w-8 h-8 mr-3 text-secondary-accent" />
+                <service.icon className="w-8 h-8 mr-3 text-primary" />
                 <CardTitle className="text-xl font-semibold text-secondary">{service.name}</CardTitle>
               </div>
             </CardHeader>
@@ -79,6 +79,9 @@ export default function ServicesPage() {
               >
                 {service.link ? (
                    <Link href={service.link}>Learn More</Link>
+                 // Create dedicated URLs if they exist, otherwise link to contact
+                ) : service.url ? (
+                    <Link href={service.url}>Learn More</Link>
                 ) : (
                    <Link href="/contact">Get a Quote</Link>
                 )}
