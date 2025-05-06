@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Phone, AlertTriangle, ShieldAlert, Water, Flame, Info } from 'lucide-react';
+import { Phone, AlertTriangle, ShieldAlert, Flame, Info, Droplet, Bath, Snowflake } from 'lucide-react';
 import { SiteConfig } from '@/config/site';
 
 
@@ -22,12 +22,12 @@ export const metadata: Metadata = {
 };
 
 const emergencyScenarios = [
-  { name: 'Burst Pipes & Major Leaks', icon: Water, description: 'Sudden pipe bursts or significant water leaks requiring immediate attention.' },
+  { name: 'Burst Pipes & Major Leaks', icon: Droplet, description: 'Sudden pipe bursts or significant water leaks requiring immediate attention.' },
   { name: 'Gas Leaks', icon: Flame, description: 'Suspected gas leaks are critical emergencies. Evacuate and call us from a safe location.' },
   { name: 'No Heat in Cold Weather', icon: Flame, description: 'Loss of heating during winter can be dangerous. We provide rapid boiler and furnace repairs.' },
-  { name: 'No Hot Water', icon: Water, description: 'Sudden lack of hot water affecting daily needs. We diagnose and fix water heater issues quickly.' },
+  { name: 'No Hot Water', icon: Bath, description: 'Sudden lack of hot water affecting daily needs. We diagnose and fix water heater issues quickly.' },
   { name: 'Sewer Line Backups', icon: AlertTriangle, description: 'Blocked or backed-up sewer lines causing unsanitary conditions and property damage.' },
-  { name: 'Frozen Pipes', icon: Water, description: 'Pipes freezing and potentially bursting during extreme cold.' },
+  { name: 'Frozen Pipes', icon: Snowflake, description: 'Pipes freezing and potentially bursting during extreme cold.' },
 ];
 
 const safetyTips = [
