@@ -67,12 +67,13 @@ export default function SchedulePage() {
               <iframe
                 src={googleScheduleFormUrl}
                 width="100%"
-                height="100%" // Adjusted for responsiveness
+                height="100%" // Make iframe fill its container's height
                 frameBorder="0"
                 marginHeight={0}
                 marginWidth={0}
                 title="High Rise Mechanical Scheduling Request Form NYC"
-                className="rounded-lg border border-border shadow-sm min-h-[70vh] md:min-h-[85vh]" // Added min-height
+                // Increased minimum height to try and encompass the entire form, reducing internal scrolling
+                className="rounded-lg border border-border shadow-sm min-h-[80vh] md:min-h-[90vh]"
                 style={{ display: 'block' }}
               >
                 Loading NYC Scheduling Form…
