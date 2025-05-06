@@ -1,11 +1,10 @@
 
 import type { Metadata } from 'next';
-import Image from 'next/image';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
-import { MapPin, Award, Users, Building, CheckSquare } from 'lucide-react';
+import { Award, Building, Users, CheckSquare } from 'lucide-react'; // Removed MapPin as it's in ServiceAreaMap
 import { SiteConfig } from '@/config/site';
-import { ServiceAreaMap } from '@/components/service-area-map';
+import { ServiceAreaMap } from '@/components/service-area-map'; // Import ServiceAreaMap
 
 
 export const metadata: Metadata = {
@@ -23,31 +22,23 @@ export default function AboutPage() {
     <div className="container mx-auto py-16 px-4 md:px-8 lg:px-16">
       <h1 className="text-4xl font-bold text-center mb-12 text-secondary text-outline">About High Rise Mechanical</h1>
 
-      {/* Company Overview Section */}
-      <section className="mb-16 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+      {/* Company Overview Section - Changed to single column */}
+      <section className="mb-16 max-w-3xl mx-auto">
         <div>
-          <h2 className="text-3xl font-semibold mb-6 text-secondary">Our Story & Commitment to NYC</h2>
+          <h2 className="text-3xl font-semibold mb-6 text-secondary text-center md:text-left">Our Story & Commitment to NYC</h2>
           <p className="text-lg text-foreground/80 mb-4">
             Founded in the heart of the Bronx, High Rise Mechanical was built on a mission to provide reliable, high-quality plumbing and heating services tailored to the unique demands of New York City. With years of hands-on experience navigating complex building infrastructures across all five boroughs, we've established a reputation for excellence, integrity, and strict adherence to NYC building codes.
           </p>
-          <p className="text-lg text-foreground/80 mb-4">
+          <p className="text-lg text-foreground/80 mb-6">
              We understand that dependable plumbing and heating systems are essential for the comfort and safety of NYC residents and businesses. Our dedicated team focuses on delivering efficient, long-lasting solutions, transparent communication, and unparalleled customer satisfaction on every project, whether it's a minor repair or a major installation.
           </p>
-           <Button asChild className="cta-button">
-              <Link href="/schedule">Request a Free Estimate</Link>
-           </Button>
+           <div className="text-center md:text-left">
+             <Button asChild className="cta-button">
+                <Link href="/schedule">Request a Free Estimate</Link>
+             </Button>
+           </div>
         </div>
-        <div>
-          <Image
-            src="/logo.png" 
-            alt={`${SiteConfig.name} Logo - NYC Plumbing and Heating Experts`}
-            width={600} // Adjust width as needed for optimal display
-            height={300} // Adjust height as needed for optimal display
-            className="rounded-lg object-contain aspect-auto mx-auto" // Changed to object-contain and aspect-auto, added mx-auto
-            priority 
-          />
-           <p className="text-sm text-center mt-2 text-muted-foreground">High Rise Mechanical - Serving NYC.</p>
-        </div>
+        {/* Removed the Image component and its container */}
       </section>
 
       {/* Values & Expertise Section */}
@@ -66,8 +57,8 @@ export default function AboutPage() {
           </div>
           <div className="text-center p-4 bg-background rounded shadow border border-border/50">
             <Users className="w-12 h-12 mx-auto mb-4 text-primary" />
-            <h3 className="text-xl font-semibold mb-2 text-secondary">Dedicated Team</h3>
-            <p className="text-foreground/70 text-sm">Our professional technicians are committed to providing expert service and customer satisfaction.</p>
+            <h3 className="text-xl font-semibold mb-2 text-secondary">Customer Satisfaction</h3>
+            <p className="text-foreground/70 text-sm">Our professional technicians are committed to providing expert service and ensuring customer satisfaction.</p>
           </div>
         </div>
       </section>
