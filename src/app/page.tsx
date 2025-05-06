@@ -3,16 +3,17 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Input } from '@/components/ui/input';
-import { Textarea } from '@/components/ui/textarea';
-import { Phone, Wrench, Heater, Droplet, Zap, ShieldCheck, Users, Star, MapPin, CheckCircle } from 'lucide-react';
+import { Phone, Wrench, Heater, Droplet, Zap, ShieldCheck, Star, MapPin, CheckCircle } from 'lucide-react';
 import ContactForm from '@/components/contact-form';
 import { SiteConfig } from '@/config/site';
 
 export const metadata: Metadata = {
-  title: `Home | ${SiteConfig.name}`,
-  description: 'Expert plumbing and heating services in NYC, available 24/7. Serving Bronx, Manhattan, Brooklyn, Queens, and Staten Island. Licensed and insured.',
-  keywords: [...SiteConfig.keywords, "NYC plumber", "heating experts", "24/7 plumber", "emergency plumbing NYC"],
+  title: `NYC Plumbing & Heating Experts | 24/7 Service | ${SiteConfig.name}`,
+  description: `High Rise Mechanical provides expert plumbing and heating services across NYC (Bronx, Manhattan, Brooklyn, Queens, Staten Island). 24/7 emergency repairs, boiler service, leak detection, and more. Licensed & insured. Get a free estimate!`,
+  keywords: [...SiteConfig.keywords, "home plumbing NYC", "NYC heating company", "reliable plumber NYC", "free plumbing estimate"],
+  alternates: {
+    canonical: '/', // Explicitly set canonical for the homepage
+  },
 };
 
 
@@ -39,15 +40,18 @@ export default function Home() {
           <h1 className="text-4xl md:text-5xl font-bold mb-4 text-white">NYC Plumbing and Heating Experts</h1>
           <p className="text-xl md:text-2xl mb-8 text-white">Available 24/7 for Emergencies</p>
           <Button asChild size="lg" className="cta-button-accent">
-            <Link href="/emergency-services">Request Emergency Service</Link>
+            <a href={`tel:${SiteConfig.phoneNumber.replace(/\D/g, '')}`}>
+               <Phone className="mr-2 h-5 w-5" /> Request Emergency Service
+            </a>
           </Button>
+           <p className="mt-4 text-sm"><Link href="/emergency-services" className="underline hover:text-white/80">Learn more about emergency services</Link></p>
         </div>
       </section>
 
       {/* Intro Section */}
       <section className="py-16 px-4 md:px-8 lg:px-16 bg-background">
         <div className="container mx-auto text-center">
-          <h2 className="text-3xl font-semibold mb-6">Your Trusted Partner in Plumbing & Heating</h2>
+          <h2 className="text-3xl font-semibold mb-6 text-secondary">Your Trusted Partner in Plumbing & Heating</h2>
           <p className="text-lg text-foreground/80 max-w-3xl mx-auto mb-12">
             High Rise Mechanical is a licensed and insured plumbing and heating company proudly serving all five boroughs of New York City: The Bronx, Manhattan, Brooklyn, Queens, and Staten Island. We deliver high-quality residential and commercial solutions with a commitment to reliability and code compliance.
           </p>
@@ -77,17 +81,17 @@ export default function Home() {
       {/* Featured Services Section */}
       <section className="py-16 px-4 md:px-8 lg:px-16 bg-muted/50">
         <div className="container mx-auto">
-          <h2 className="text-3xl font-semibold text-center mb-12">Our Top Services</h2>
+          <h2 className="text-3xl font-semibold text-center mb-12 text-secondary">Our Top Services</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
             {featuredServices.map((service) => (
-              <Card key={service.name} className="text-center shadow-md hover:shadow-lg transition-shadow duration-300">
+              <Card key={service.name} className="text-center shadow-md hover:shadow-lg transition-shadow duration-300 flex flex-col">
                 <CardHeader>
                   <service.icon className="w-12 h-12 mx-auto mb-4 text-secondary-accent" />
                   <CardTitle className="text-xl font-semibold text-secondary">{service.name}</CardTitle>
                 </CardHeader>
-                <CardContent>
+                <CardContent className="flex-grow flex flex-col justify-between">
                   <p className="text-foreground/70 mb-4">{service.description}</p>
-                  <Button asChild variant="outline" className="border-primary text-primary hover:bg-primary/10">
+                  <Button asChild variant="outline" className="mt-auto border-primary text-primary hover:bg-primary/10">
                     <Link href={service.link}>Learn More</Link>
                   </Button>
                 </CardContent>
@@ -108,17 +112,18 @@ export default function Home() {
           <h2 className="text-3xl font-bold mb-4">Need Help Urgently?</h2>
           <p className="text-xl mb-8">We offer 24/7 Emergency Plumbing and Heating Services across NYC.</p>
           <Button asChild size="lg" variant="secondary" className="bg-white text-destructive hover:bg-gray-100">
-            <Link href="/emergency-services">
+             <a href={`tel:${SiteConfig.phoneNumber.replace(/\D/g, '')}`}>
               <Phone className="mr-2 h-5 w-5" /> Call for Emergency Service
-            </Link>
+             </a>
           </Button>
+           <p className="mt-4 text-sm"><Link href="/emergency-services" className="underline hover:text-white/80">More Emergency Info</Link></p>
         </div>
       </section>
 
       {/* Testimonial Slider */}
       <section className="py-16 px-4 md:px-8 lg:px-16 bg-background">
         <div className="container mx-auto">
-          <h2 className="text-3xl font-semibold text-center mb-12">What Our Clients Say</h2>
+          <h2 className="text-3xl font-semibold text-center mb-12 text-secondary">What Our Clients Say</h2>
           {/* Basic Testimonial Layout - A slider/carousel component would enhance this */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {testimonials.map((testimonial) => (
@@ -150,7 +155,7 @@ export default function Home() {
       {/* Contact Prompt Section */}
       <section className="py-16 px-4 md:px-8 lg:px-16 bg-muted/50">
         <div className="container mx-auto max-w-2xl text-center">
-           <h2 className="text-3xl font-semibold mb-6">Get a Free Estimate</h2>
+           <h2 className="text-3xl font-semibold mb-6 text-secondary">Get a Free Estimate</h2>
            <p className="text-lg text-foreground/80 mb-8">
              Contact us today for a free, no-obligation quote on your plumbing or heating project.
            </p>

@@ -28,10 +28,12 @@ export default {
         primary: {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",
+          hover: "hsl(var(--primary-hover))", // Added hover state
         },
         secondary: {
           DEFAULT: "hsl(var(--secondary))",
           foreground: "hsl(var(--secondary-foreground))",
+          hover: "hsl(var(--secondary-hover))", // Added hover state
         },
         destructive: {
           DEFAULT: "hsl(var(--destructive))",
@@ -45,6 +47,11 @@ export default {
           DEFAULT: "hsl(var(--accent))",
           foreground: "hsl(var(--accent-foreground))",
         },
+        'accent-cta': { // Added accent-cta color definition
+          DEFAULT: "hsl(var(--accent-cta))",
+          foreground: "hsl(var(--accent-cta-foreground))",
+          hover: "hsl(var(--accent-cta-hover))", // Added hover state
+        },
         popover: {
           DEFAULT: "hsl(var(--popover))",
           foreground: "hsl(var(--popover-foreground))",
@@ -53,18 +60,18 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
-        // Custom colors from palette for easier use
-        'teal-blue-primary': 'hsl(var(--primary))', // #027B9A - Primary CTA
-        'dark-steel-blue': 'hsl(var(--secondary))', // #042C35 - Headers, Footer
-        'vibrant-orange-accent': 'hsl(var(--accent))', // #FFA500 - Special CTAs
-        'teal-blue-secondary-accent': 'hsl(var(--teal-blue-secondary-accent))', // #3D9DAC - Icons, highlights
-        'metallic-silver': 'hsl(var(--border))', // #C0C0C0 - Borders, dividers
-        'soft-aqua': 'hsl(var(--muted))', // #B3DDE5 - Section highlights
-        'white-bg': '#FFFFFF', // Base background (though usually covered by --background)
-        'near-black-text': 'hsl(var(--foreground))', // #111111
-        'dark-gray-text': '#444444',
-        'alert-red': 'hsl(var(--destructive))', // #D33C3C - Errors
-        'dark-steel-blue-cta-hover': 'hsl(var(--dark-steel-blue-cta-hover))', // #01566D
+        // Custom colors from palette for easier use (kept for potential direct use)
+        'teal-blue-primary': 'hsl(var(--primary))',
+        'dark-steel-blue': 'hsl(var(--secondary))',
+        'vibrant-orange-accent-cta': 'hsl(var(--accent-cta))', // Keep this alias if used elsewhere
+        'teal-blue-secondary-accent': 'hsl(var(--primary))', // Use primary instead? Check CSS usage
+        'metallic-silver': 'hsl(var(--border))',
+        'soft-aqua': 'hsl(var(--muted))',
+        'white-bg': '#FFFFFF',
+        'near-black-text': 'hsl(var(--foreground))',
+        'dark-gray-text': '#444444', // Consider using foreground/muted-foreground
+        'alert-red': 'hsl(var(--destructive))',
+        'dark-steel-blue-cta-hover': 'hsl(var(--secondary-hover))', // Use secondary.hover instead?
   			chart: {
   				'1': 'hsl(var(--chart-1))',
   				'2': 'hsl(var(--chart-2))',

@@ -4,83 +4,91 @@
 
 @layer base {
   :root {
-    --background: 200 33% 98%; /* #F8FBFC */
-    --foreground: 0 0% 7%; /* #111111 */
+    --background: 0 0% 100%; /* #FFFFFF - Updated base background to white */
+    --foreground: 240 10% 3.9%; /* #0A0A0A - Near black text */
 
     --card: 0 0% 100%; /* #FFFFFF */
-    --card-foreground: 0 0% 7%; /* #111111 */
+    --card-foreground: 240 10% 3.9%; /* #0A0A0A */
 
     --popover: 0 0% 100%; /* #FFFFFF */
-    --popover-foreground: 0 0% 7%; /* #111111 */
+    --popover-foreground: 240 10% 3.9%; /* #0A0A0A */
 
-    --primary: 193 96% 30%; /* #027B9A */
+    --primary: 190 45% 48%; /* #3D9DAC - Teal Blue (Primary CTA, Icons, Highlights) */
     --primary-foreground: 0 0% 100%; /* #FFFFFF */
+    --primary-hover: 190 45% 40%; /* Darker shade of #3D9DAC */
 
-    --secondary: 193 94% 12%; /* #042C35 */
+    --secondary: 193 94% 12%; /* #042C35 - Dark Steel Blue (Headers, Footer) */
     --secondary-foreground: 0 0% 100%; /* #FFFFFF */
+    --secondary-hover: 193 94% 8%; /* Darker shade of #042C35 */
 
-    --muted: 193 47% 79%; /* #B3DDE5 */
-    --muted-foreground: 193 94% 12%; /* #042C35 */
+    --muted: 193 47% 90%; /* #E6F4F7 - Lighter Soft Aqua for subtle highlights */
+    --muted-foreground: 193 94% 25%; /* Darker Aqua text on muted bg */
 
-    --accent: 39 100% 50%; /* #FFA500 */
-    --accent-foreground: 193 94% 12%; /* #042C35 */
+    --accent: 0 0% 75%; /* #C0C0C0 - Metallic Silver (Borders, Dividers) */
+    --accent-foreground: 193 94% 12%; /* #042C35 - Dark text on accent */
 
-    --destructive: 0 68% 53%; /* #D33C3C */
+    /* Accent color for Emergency/High-Priority CTAs - Use Vibrant Orange */
+    --accent-cta: 39 100% 50%; /* #FFA500 */
+    --accent-cta-foreground: 193 94% 12%; /* #042C35 */
+    --accent-cta-hover: 39 100% 45%; /* Darker Orange */
+
+    --destructive: 0 72% 51%; /* #D33C3C - Alert Red */
     --destructive-foreground: 0 0% 100%; /* #FFFFFF */
 
-    --border: 0 0% 75%; /* #C0C0C0 */
-    --input: 0 0% 75%; /* #C0C0C0 */
-    --ring: 190 45% 48%; /* #3D9DAC */ /* Secondary Accent for focus rings */
+    --border: 0 0% 85%; /* #D9D9D9 - Slightly lighter border than Metallic Silver */
+    --input: 0 0% 85%; /* #D9D9D9 */
+    --ring: 190 45% 48%; /* #3D9DAC - Teal Blue for focus rings */
 
     --radius: 0.5rem;
 
-    /* Specific overrides based on proposal */
-    /* Primary CTA: #027B9A (Handled by --primary) */
-    /* CTA Hover: #01566D (Will be handled by hover states, e.g., bg-primary/90) */
-    /* Secondary Accent: #3D9DAC (Used for --ring, can be used explicitly with text-teal-blue-secondary-accent or bg-teal-blue-secondary-accent if needed) */
-    /* Headers/Contrast: #042C35 (Handled by --secondary) */
-    /* Neutral Support: #C0C0C0 (Handled by --border, --input) */
-    /* Light Background: #F8FBFC (Handled by --background) */
-    /* Text: #111111 / #444444 (Handled by --foreground, can use text-gray-700 for #444) */
-    /* Error/Alert: #D33C3C (Handled by --destructive) */
+    /* Custom Colors derived from palette */
+    --teal-blue-primary: 190 45% 48%; /* #3D9DAC */
+    --dark-steel-blue-secondary: 193 94% 12%; /* #042C35 */
+    --metallic-silver-accent: 0 0% 75%; /* #C0C0C0 */
+    --soft-aqua-muted: 193 47% 90%; /* #E6F4F7 */
+    --alert-red-destructive: 0 72% 51%; /* #D33C3C */
+    --vibrant-orange-accent-cta: 39 100% 50%; /* #FFA500 */
+     /* CTA Hover - Darker Teal - Moved to top */
 
-    /* Custom Colors if needed */
-    --teal-blue-secondary-accent: 190 45% 48%; /* #3D9DAC */
-    --dark-steel-blue-cta-hover: 193 98% 22%; /* #01566D */
+    /* Dark Mode Colors (Example - Adjust as needed) */
+    /* ... Dark mode definitions ... */
   }
 
   .dark {
-    /* Define dark mode colors if necessary, otherwise inherit or adjust */
-    --background: 193 94% 12%; /* #042C35 */
-    --foreground: 200 33% 98%; /* #F8FBFC */
+     /* Define dark mode variables here if needed */
+    --background: 240 10% 3.9%; /* Dark background */
+    --foreground: 0 0% 98%;    /* Light foreground */
 
-    --card: 193 90% 15%; /* Slightly lighter than background */
-    --card-foreground: 200 33% 98%; /* #F8FBFC */
+    --card: 240 4% 10%;      /* Slightly lighter dark card */
+    --card-foreground: 0 0% 98%;
 
-    --popover: 193 90% 15%;
-    --popover-foreground: 200 33% 98%;
+    --popover: 240 4% 10%;
+    --popover-foreground: 0 0% 98%;
 
-    --primary: 193 96% 30%; /* #027B9A */
-    --primary-foreground: 0 0% 100%;
+    --primary: 190 45% 55%; /* Lighter Teal Blue for dark mode */
+    --primary-foreground: 193 94% 12%; /* Dark Steel Blue text */
+    --primary-hover: 190 45% 48%; /* Teal Blue primary */
 
-    --secondary: 200 33% 98%; /* Light background becomes secondary in dark */
-    --secondary-foreground: 193 94% 12%; /* Dark Steel Blue */
+    --secondary: 0 0% 98%; /* Light color for secondary elements */
+    --secondary-foreground: 193 94% 12%;
+    --secondary-hover: 193 94% 8%; /* Darker shade of #042C35 */
 
-    --muted: 193 47% 30%; /* Darker Aqua */
-    --muted-foreground: 193 47% 85%; /* Lighter Aqua Text */
+    --muted: 193 94% 15%; /* Darker Aqua */
+    --muted-foreground: 193 47% 70%; /* Lighter Aqua text */
 
-    --accent: 39 100% 50%; /* #FFA500 */
-    --accent-foreground: 193 94% 12%; /* Dark Steel Blue */
+    --accent: 0 0% 50%; /* Darker Silver */
+    --accent-foreground: 0 0% 98%;
 
-    --destructive: 0 68% 53%; /* #D33C3C */
-    --destructive-foreground: 0 0% 100%;
+    --accent-cta: 39 100% 55%; /* Slightly brighter orange */
+    --accent-cta-foreground: 193 94% 12%;
+    --accent-cta-hover: 39 100% 50%; /* Orange */
 
-    --border: 0 0% 45%; /* Darker Silver/Gray */
-    --input: 0 0% 45%;
-    --ring: 190 45% 48%; /* #3D9DAC */
+    --destructive: 0 63% 45%; /* Darker Red */
+    --destructive-foreground: 0 0% 98%;
 
-    --teal-blue-secondary-accent: 190 45% 48%; /* #3D9DAC */
-    --dark-steel-blue-cta-hover: 193 96% 25%; /* Slightly lighter hover for dark */
+    --border: 0 0% 30%; /* Darker border */
+    --input: 0 0% 30%;
+    --ring: 190 45% 55%; /* Lighter Teal Blue ring */
   }
 }
 
@@ -90,34 +98,88 @@
   }
   body {
     @apply bg-background text-foreground;
+    /* Apply Apple system fonts */
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
   }
   h1, h2, h3, h4, h5, h6 {
-    @apply text-secondary; /* Dark Steel Blue for headers */
+    @apply text-secondary font-semibold; /* Dark Steel Blue for headers, ensure weight */
+    /* Optional: Subtle text outline matching logo style */
+    /* text-shadow: -1px -1px 0 hsl(var(--border)), 1px -1px 0 hsl(var(--border)), -1px 1px 0 hsl(var(--border)), 1px 1px 0 hsl(var(--border)); */
   }
-  /* Ensure sufficient contrast for text on different backgrounds */
-  .text-on-primary { @apply text-primary-foreground; }
-  .text-on-secondary { @apply text-secondary-foreground; }
-  .text-on-accent { @apply text-accent-foreground; }
-  .text-on-muted { @apply text-muted-foreground; }
-  .text-on-destructive { @apply text-destructive-foreground; }
+  /* Ensure links use the primary color */
+  a {
+     @apply text-primary hover:text-primary/80 transition-colors;
+  }
+  /* Remove default underline from links within buttons */
+  .button a, button a {
+    text-decoration: none;
+  }
 }
 
 @layer components {
+  /* Standard CTA Button (Teal Blue) */
   .cta-button {
-    @apply bg-primary text-primary-foreground hover:bg-primary/90; /* Teal Blue */
+    @apply bg-primary text-primary-foreground hover:bg-primary-hover focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-2 shadow-md hover:shadow-lg transition-all duration-200;
   }
+
+  /* Accent CTA Button (Vibrant Orange - for Emergency or high priority) */
   .cta-button-accent {
-     @apply bg-accent text-accent-foreground hover:bg-accent/90; /* Vibrant Orange */
+     @apply bg-accent-cta text-accent-cta-foreground hover:bg-accent-cta-hover focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-2 shadow-md hover:shadow-lg transition-all duration-200;
   }
+
+  /* Secondary Button Style (e.g., Dark Steel Blue or Outline) */
   .cta-button-secondary {
-      @apply bg-secondary text-secondary-foreground hover:bg-secondary/90; /* Dark Steel Blue */
+      @apply bg-secondary text-secondary-foreground hover:bg-secondary-hover focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-2 shadow-sm hover:shadow-md transition-all duration-200;
+      /* Or use outline variant: */
+      /* @apply border border-primary text-primary bg-transparent hover:bg-primary/10; */
   }
-   /* Helper class for the secondary accent color */
+
+   /* Helper class for the secondary accent color if needed */
   .text-secondary-accent {
-    color: hsl(var(--teal-blue-secondary-accent));
+    color: hsl(var(--primary)); /* Use primary teal blue for icons/highlights */
   }
   .bg-secondary-accent {
-     background-color: hsl(var(--teal-blue-secondary-accent));
+     background-color: hsl(var(--primary)); /* Use primary teal blue */
    }
+
+   /* Curved Section Separator (Example using ::before/::after) */
+   .section-separator-curved-top::before {
+      content: '';
+      display: block;
+      position: absolute;
+      top: -50px; /* Adjust curvature height */
+      left: 0;
+      width: 100%;
+      height: 50px; /* Adjust curvature height */
+      background: inherit; /* Inherit background of the element below */
+      border-radius: 50% / 100%;
+      border-top-left-radius: 0;
+      border-top-right-radius: 0;
+      z-index: 0; /* Ensure it's behind content */
+   }
+    .section-separator-curved-bottom::after {
+      content: '';
+      display: block;
+      position: absolute;
+      bottom: -50px; /* Adjust curvature height */
+      left: 0;
+      width: 100%;
+      height: 50px; /* Adjust curvature height */
+      background: inherit; /* Inherit background of the element above */
+      border-radius: 50% / 100%;
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+      transform: rotate(180deg); /* Flip the curve */
+      z-index: 0;
+   }
+
+   /* Placeholder for Outline Text Effect */
+   .text-outline {
+     /* Example: Adjust color (border) and thickness (1px) */
+     /* text-shadow: -1px -1px 0 hsl(var(--border)), 1px -1px 0 hsl(var(--border)), -1px 1px 0 hsl(var(--border)), 1px 1px 0 hsl(var(--border)); */
+     /* Or use stroke for SVG text */
+     /* -webkit-text-stroke: 1px hsl(var(--border)); */
+     /* text-stroke: 1px hsl(var(--border)); */
+   }
+
 }
