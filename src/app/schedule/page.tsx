@@ -4,26 +4,25 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { CalendarCheck, Phone, AlertTriangle } from 'lucide-react';
 import { SiteConfig } from '@/config/site';
-// Removed SchedulingWidget import
 
 export const metadata: Metadata = {
   title: `Schedule Plumbing & Heating Service | NYC | ${SiteConfig.name}`,
   description: `Book your non-emergency plumbing or heating appointment online with ${SiteConfig.name}. Select your preferred date and time. Serving Bronx, Manhattan, Brooklyn, Queens & Staten Island. For emergencies, call ${SiteConfig.phoneNumber} 24/7.`,
-  keywords: [...SiteConfig.keywords, "schedule plumbing NYC", "book plumber online", "heating appointment NYC", "schedule boiler service", "online plumbing booking"],
+  keywords: [...SiteConfig.keywords, "schedule plumbing NYC", "book plumber online", "heating appointment NYC", "schedule boiler service", "online plumbing booking", "NYC plumbing appointment", "heating service booking"],
    alternates: {
     canonical: '/schedule',
   },
 };
 
 export default function SchedulePage() {
-  // Placeholder Google Form URL - Replace with your actual Google Form embed URL
-  const googleScheduleFormUrl = "YOUR_GOOGLE_FORM_EMBED_URL_FOR_SCHEDULING_HERE";
+  // Updated Google Form URL
+  const googleScheduleFormUrl = "https://docs.google.com/forms/d/e/1FAIpQLSd0CjCs4xPpOv1BSjT4JvPGW3BbLDPko2Cx6pq_VYEDHaGOmA/viewform?embedded=true";
 
   return (
     <div className="container mx-auto py-16 px-4 md:px-8 lg:px-16">
       <h1 className="text-4xl font-bold text-center mb-6 text-secondary text-outline">Schedule Your Service</h1>
       <p className="text-lg text-center text-foreground/80 max-w-2xl mx-auto mb-12">
-        Use the tool below to request a non-emergency appointment for plumbing or heating services. Please provide your details, and we'll contact you to confirm your booking based on availability.
+        Use the form below to request a non-emergency appointment for plumbing or heating services. Please provide your details, and we'll contact you to confirm your booking based on availability.
       </p>
 
       {/* Emergency Callout */}
@@ -58,22 +57,22 @@ export default function SchedulePage() {
               Please provide your details using the form below. We will contact you to confirm the appointment details and availability. Submission does not guarantee the requested time.
            </p>
           {/* Google Form Embed */}
-          {googleScheduleFormUrl.startsWith("YOUR_") ? (
+          {googleScheduleFormUrl.startsWith("YOUR_") || !googleScheduleFormUrl.startsWith("https://docs.google.com/forms") ? (
               <div className="bg-muted p-6 rounded-lg border border-dashed border-border text-center">
                  <p className="text-muted-foreground">
-                    Please replace the placeholder URL in `src/app/schedule/page.tsx` with your actual Google Form embed URL to display the scheduling form here.
+                    To display the scheduling form, please ensure a valid Google Form embed URL is set in `src/app/schedule/page.tsx`.
                  </p>
               </div>
           ) : (
               <iframe
                 src={googleScheduleFormUrl}
-                width="100%"
-                height="800" // Adjust height as needed
+                width="100%" // Use 100% width for responsiveness
+                height="1200" // Adjusted height based on typical Google Form length, can be fine-tuned
                 frameBorder="0"
                 marginHeight={0}
                 marginWidth={0}
-                title="Scheduling Form"
-                className="rounded-lg border border-border shadow-sm"
+                title="High Rise Mechanical Scheduling Request Form"
+                className="rounded-lg border border-border shadow-sm min-h-[600px] md:min-h-[800px]" // Added min-height
               >
                 Loading…
               </iframe>
