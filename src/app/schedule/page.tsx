@@ -15,7 +15,7 @@ export const metadata: Metadata = {
 };
 
 export default function SchedulePage() {
-  // Updated Google Form URL
+  // Updated Google Form URL from user input
   const googleScheduleFormUrl = "https://docs.google.com/forms/d/e/1FAIpQLSd0CjCs4xPpOv1BSjT4JvPGW3BbLDPko2Cx6pq_VYEDHaGOmA/viewform?embedded=true";
 
   return (
@@ -45,7 +45,7 @@ export default function SchedulePage() {
        </div>
 
       {/* Scheduling Widget Section (Google Form Embed) */}
-      <Card className="max-w-3xl mx-auto shadow-lg border border-border/50">
+      <Card className="max-w-3xl mx-auto shadow-lg border border-border/50 overflow-hidden"> {/* Added overflow-hidden to card for cleaner look if iframe content is unexpectedly clipped by rounding */}
         <CardHeader>
            <CardTitle className="text-2xl font-semibold text-secondary flex items-center">
              <CalendarCheck className="w-6 h-6 mr-3 text-primary" />
@@ -54,7 +54,7 @@ export default function SchedulePage() {
         </CardHeader>
         <CardContent>
            <p className="text-sm text-muted-foreground mb-6">
-              Please provide your details using the form below. We will contact you to confirm the appointment details and availability. Submission does not guarantee the requested time.
+              Please provide your details using the form below. We will contact you to confirm the appointment details and availability. Submission does not guarantee the requested time. Our team typically responds within 24 business hours.
            </p>
           {/* Google Form Embed */}
           {googleScheduleFormUrl.startsWith("YOUR_") || !googleScheduleFormUrl.startsWith("https://docs.google.com/forms") ? (
@@ -66,13 +66,14 @@ export default function SchedulePage() {
           ) : (
               <iframe
                 src={googleScheduleFormUrl}
-                width="100%" // Use 100% width for responsiveness
-                height="1200" // Adjusted height based on typical Google Form length, can be fine-tuned
+                width="100%" 
+                height="3354" // Fixed height from user-provided Google Form embed to ensure form content is fully visible without iframe scrollbars
                 frameBorder="0"
                 marginHeight={0}
                 marginWidth={0}
                 title="High Rise Mechanical Scheduling Request Form"
-                className="rounded-lg border border-border shadow-sm min-h-[600px] md:min-h-[800px]" // Added min-height
+                className="rounded-lg border border-border shadow-sm" 
+                style={{ display: 'block' }} // Ensure iframe behaves as a block element
               >
                 Loading…
               </iframe>
@@ -82,7 +83,7 @@ export default function SchedulePage() {
 
       {/* Confirmation & Contact Info */}
       <div className="text-center mt-12 text-sm text-muted-foreground">
-        <p>After submitting your request, our team will reach out to confirm your appointment details.</p>
+        <p>After submitting your request, our team will reach out within 24 business hours to confirm your appointment details.</p>
         <p className="mt-2">If you have immediate questions, feel free to <Link href="/contact" className="text-primary hover:underline">contact us</Link> or call <a href={`tel:${SiteConfig.phoneNumber.replace(/\D/g, '')}`} className="text-primary hover:underline">{SiteConfig.phoneNumber}</a>.</p>
       </div>
     </div>
