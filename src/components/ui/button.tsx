@@ -9,17 +9,17 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        default: "bg-primary text-primary-foreground hover:bg-primary-hover", // Use explicit hover color
+        default: "bg-primary text-primary-foreground hover:bg-primary-hover hover:text-primary-foreground", // Ensure text remains primary-foreground on hover
         destructive:
-          "bg-destructive text-destructive-foreground hover:bg-destructive/90", // Keep opacity for destructive or define hover if needed
+          "bg-destructive text-destructive-foreground hover:bg-destructive/90",
         outline:
           "border border-input bg-background hover:bg-accent hover:text-accent-foreground",
         secondary:
-          "bg-secondary text-secondary-foreground hover:bg-secondary-hover", // Use explicit hover color
+          "bg-secondary text-secondary-foreground hover:bg-secondary-hover hover:text-secondary-foreground", // Ensure text remains secondary-foreground on hover
         ghost: "hover:bg-accent hover:text-accent-foreground",
         link: "text-primary underline-offset-4 hover:underline",
-        'accent-cta': // Added variant for accent-cta
-          "bg-accent-cta text-accent-cta-foreground hover:bg-accent-cta-hover",
+        'accent-cta':
+          "bg-accent-cta text-accent-cta-foreground hover:bg-accent-cta-hover hover:text-accent-cta-foreground", // Ensure text remains accent-cta-foreground on hover
       },
       size: {
         default: "h-10 px-4 py-2",
