@@ -2,7 +2,6 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Phone, Mail, MapPin, AlertTriangle, Clock, CalendarClock } from 'lucide-react'; // Added Clock and CalendarClock icons
-import ContactForm from '@/components/contact-form';
 import { SiteConfig } from '@/config/site';
 import GoogleMapEmbed from '@/components/google-map-embed';
 
@@ -19,18 +18,41 @@ export default function ContactPage() {
   // Note: Google Maps Embed API requires an API key configured in environment variables.
   // Fallback link is provided if the key is missing.
 
+  // Placeholder Google Form URL - Replace with your actual Google Form embed URL
+  const googleContactFormUrl = "YOUR_GOOGLE_FORM_EMBED_URL_FOR_CONTACT_HERE";
+
   return (
     <div className="container mx-auto py-16 px-4 md:px-8 lg:px-16">
       <h1 className="text-4xl font-bold text-center mb-12 text-secondary text-outline">Contact High Rise Mechanical</h1>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-        {/* Contact Form Section */}
+        {/* Contact Form Section (Google Form Embed) */}
         <div>
           <h2 className="text-2xl font-semibold mb-6 text-secondary">Send Us a Message</h2>
           <p className="text-foreground/80 mb-8">
             Have a question, need a quote for a non-emergency service, or want to discuss a project? Fill out the form below, and our team will get back to you promptly during business hours. For immediate needs, please call.
           </p>
-          <ContactForm />
+          {/* Google Form Embed */}
+          {googleContactFormUrl.startsWith("YOUR_") ? (
+              <div className="bg-muted p-6 rounded-lg border border-dashed border-border text-center">
+                 <p className="text-muted-foreground">
+                    Please replace the placeholder URL in `src/app/contact/page.tsx` with your actual Google Form embed URL to display the contact form here.
+                 </p>
+              </div>
+          ) : (
+              <iframe
+                src={googleContactFormUrl}
+                width="100%"
+                height="650" // Adjust height as needed
+                frameBorder="0"
+                marginHeight={0}
+                marginWidth={0}
+                title="Contact Form"
+                className="rounded-lg border border-border shadow-sm"
+              >
+                Loading…
+              </iframe>
+          )}
         </div>
 
         {/* Contact Info & Map Section */}
@@ -110,7 +132,7 @@ export default function ContactPage() {
                  <Clock className="w-5 h-5 mt-1 text-primary flex-shrink-0" />
                  <div>
                    <h3 className="font-medium text-secondary">Business Hours</h3>
-                   <p className="text-foreground/80">Office Hours: Mon-Fri, 8:00 AM - 5:00 PM (Example)</p> {/* TODO: Update with actual office hours */}
+                    <p className="text-foreground/80">Office Hours: {SiteConfig.officeHours}</p>
                    <p className="text-sm text-muted-foreground">Emergency Service: Available 24/7</p>
                  </div>
                </div>

@@ -4,7 +4,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { CalendarCheck, Phone, AlertTriangle } from 'lucide-react';
 import { SiteConfig } from '@/config/site';
-import SchedulingWidget from '@/components/scheduling-widget'; // Assuming a widget component
+// Removed SchedulingWidget import
 
 export const metadata: Metadata = {
   title: `Schedule Plumbing & Heating Service | NYC | ${SiteConfig.name}`,
@@ -16,11 +16,14 @@ export const metadata: Metadata = {
 };
 
 export default function SchedulePage() {
+  // Placeholder Google Form URL - Replace with your actual Google Form embed URL
+  const googleScheduleFormUrl = "YOUR_GOOGLE_FORM_EMBED_URL_FOR_SCHEDULING_HERE";
+
   return (
     <div className="container mx-auto py-16 px-4 md:px-8 lg:px-16">
       <h1 className="text-4xl font-bold text-center mb-6 text-secondary text-outline">Schedule Your Service</h1>
       <p className="text-lg text-center text-foreground/80 max-w-2xl mx-auto mb-12">
-        Use the tool below to request a non-emergency appointment for plumbing or heating services. Select your desired date and time, and we'll confirm your booking.
+        Use the tool below to request a non-emergency appointment for plumbing or heating services. Please provide your details, and we'll contact you to confirm your booking based on availability.
       </p>
 
       {/* Emergency Callout */}
@@ -42,21 +45,39 @@ export default function SchedulePage() {
          </div>
        </div>
 
-      {/* Scheduling Widget Section */}
+      {/* Scheduling Widget Section (Google Form Embed) */}
       <Card className="max-w-3xl mx-auto shadow-lg border border-border/50">
         <CardHeader>
            <CardTitle className="text-2xl font-semibold text-secondary flex items-center">
              <CalendarCheck className="w-6 h-6 mr-3 text-primary" />
-             Book Your Appointment Online
+             Request Your Appointment Online
            </CardTitle>
         </CardHeader>
         <CardContent>
            <p className="text-sm text-muted-foreground mb-6">
-              Please provide your details and preferred time slot. We will contact you to confirm the appointment details and availability. Submission does not guarantee the requested time.
+              Please provide your details using the form below. We will contact you to confirm the appointment details and availability. Submission does not guarantee the requested time.
            </p>
-          {/* Placeholder for the scheduling widget */}
-          {/* Replace this with your actual scheduling widget implementation or embed code */}
-          <SchedulingWidget />
+          {/* Google Form Embed */}
+          {googleScheduleFormUrl.startsWith("YOUR_") ? (
+              <div className="bg-muted p-6 rounded-lg border border-dashed border-border text-center">
+                 <p className="text-muted-foreground">
+                    Please replace the placeholder URL in `src/app/schedule/page.tsx` with your actual Google Form embed URL to display the scheduling form here.
+                 </p>
+              </div>
+          ) : (
+              <iframe
+                src={googleScheduleFormUrl}
+                width="100%"
+                height="800" // Adjust height as needed
+                frameBorder="0"
+                marginHeight={0}
+                marginWidth={0}
+                title="Scheduling Form"
+                className="rounded-lg border border-border shadow-sm"
+              >
+                Loading…
+              </iframe>
+          )}
         </CardContent>
       </Card>
 

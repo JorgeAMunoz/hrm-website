@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Phone, Wrench, Heater, Droplet, Zap, ShieldCheck, Star, MapPin, CheckCircle } from 'lucide-react';
-import ContactForm from '@/components/contact-form';
+// Removed ContactForm import
 import { SiteConfig } from '@/config/site';
 
 export const metadata: Metadata = {
@@ -36,7 +36,7 @@ export default function Home() {
     <div className="flex flex-col">
       {/* Hero Section */}
        {/* Added curved bottom separator */}
-      <section className="relative bg-gradient-to-r from-secondary to-teal-blue-primary text-primary-foreground py-20 px-4 md:px-8 lg:px-16 text-center section-separator-curved-bottom">
+      <section className="relative bg-gradient-to-r from-secondary to-primary text-primary-foreground py-20 px-4 md:px-8 lg:px-16 text-center section-separator-curved-bottom">
         <div className="container mx-auto relative z-10"> {/* Ensure content is above pseudo-element */}
           <h1 className="text-4xl md:text-5xl font-bold mb-4 text-white text-outline">NYC Plumbing and Heating Experts</h1>
           <p className="text-xl md:text-2xl mb-8 text-white">Available 24/7 for Emergencies</p>
@@ -163,7 +163,10 @@ export default function Home() {
            <p className="text-lg text-foreground/80 mb-8">
              Contact us today for a free, no-obligation quote on your plumbing or heating project.
            </p>
-           <ContactForm />
+           {/* Link to the Contact Page */}
+           <Button asChild size="lg" className="cta-button">
+             <Link href="/contact">Request Your Quote</Link>
+           </Button>
         </div>
       </section>
     </div>
