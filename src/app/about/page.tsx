@@ -5,13 +5,13 @@ import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { MapPin, Award, Users, Building, CheckSquare } from 'lucide-react';
 import { SiteConfig } from '@/config/site';
-import { ServiceAreaMap } from '@/components/service-area-map'; // Correct import path
+import { ServiceAreaMap } from '@/components/service-area-map';
 
 
 export const metadata: Metadata = {
   title: `About Us | NYC Plumbers & Heating | ${SiteConfig.name}`,
-  description: `Learn about ${SiteConfig.name}, your trusted NYC plumbing and heating company. We proudly serve all 5 boroughs (Bronx, Manhattan, Brooklyn, Queens, Staten Island) with experienced technicians committed to quality & code compliance.`, // Refined description, removed licensed/insured
-  keywords: [...SiteConfig.keywords, "about High Rise Mechanical", "NYC plumbing company", "heating contractors NYC", "NYC building plumbing", "Bronx plumbing company"], // Removed location keyword
+  description: `Learn about ${SiteConfig.name}, your trusted NYC plumbing and heating company. We proudly serve all 5 boroughs (Bronx, Manhattan, Brooklyn, Queens, Staten Island) with experienced technicians committed to quality & code compliance.`,
+  keywords: [...SiteConfig.keywords, "about High Rise Mechanical", "NYC plumbing company", "heating contractors NYC", "NYC building plumbing", "Bronx plumbing company"],
    alternates: {
     canonical: '/about',
   },
@@ -34,28 +34,26 @@ export default function AboutPage() {
              We understand that dependable plumbing and heating systems are essential for the comfort and safety of NYC residents and businesses. Our dedicated team focuses on delivering efficient, long-lasting solutions, transparent communication, and unparalleled customer satisfaction on every project, whether it's a minor repair or a major installation.
           </p>
            <Button asChild className="cta-button">
-              <Link href="/contact">Request a Free Estimate</Link>
+              <Link href="/schedule">Request a Free Estimate</Link>
            </Button>
         </div>
         <div>
-          {/* Placeholder image - Replace with an actual team or job site photo */}
           <Image
-            src="https://picsum.photos/600/400" // Use color images
-            alt="High Rise Mechanical team working on a plumbing installation in NYC"
-            data-ai-hint="plumbing team working" // Hint for AI image generation
-            width={600}
-            height={400}
-            className="rounded-lg shadow-lg object-cover aspect-[3/2] border border-border/50"
-            priority // Load this image early if it's above the fold
+            src="/logo.png" 
+            alt={`${SiteConfig.name} Logo - NYC Plumbing and Heating Experts`}
+            width={600} // Adjust width as needed for optimal display
+            height={300} // Adjust height as needed for optimal display
+            className="rounded-lg object-contain aspect-auto mx-auto" // Changed to object-contain and aspect-auto, added mx-auto
+            priority 
           />
-           <p className="text-sm text-center mt-2 text-muted-foreground">Our experienced technicians at work.</p>
+           <p className="text-sm text-center mt-2 text-muted-foreground">High Rise Mechanical - Serving NYC.</p>
         </div>
       </section>
 
-      {/* Values & Expertise Section - Removed Licensing/Insurance/Certification */}
+      {/* Values & Expertise Section */}
       <section className="mb-16 bg-muted p-8 rounded-lg border border-border/50">
         <h2 className="text-3xl font-semibold text-center mb-12 text-secondary">Why Choose High Rise Mechanical?</h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8"> {/* Adjusted grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
            <div className="text-center p-4 bg-background rounded shadow border border-border/50">
             <Award className="w-12 h-12 mx-auto mb-4 text-primary" />
             <h3 className="text-xl font-semibold mb-2 text-secondary">Experience & Expertise</h3>
@@ -74,30 +72,14 @@ export default function AboutPage() {
         </div>
       </section>
 
-       {/* Use the ServiceAreaMap component */}
        <ServiceAreaMap />
-
-       {/* Removed Meet Our Dedicated Team Section */}
-
-       {/* Optional: Clients/Partners Section (Placeholder) */}
-       {/*
-       <section>
-          <h2 className="text-3xl font-semibold text-center mb-12">Trusted By NYC Buildings & Businesses</h2>
-          <div className="flex flex-wrap justify-center items-center gap-8 grayscale opacity-75">
-             {/* Add logos or names of prominent commercial clients or building management companies *}
-             <span>Client Logo 1</span>
-             <span>Major Property Management Co.</span>
-             <span>Well-Known NYC Building</span>
-          </div>
-       </section>
-       */}
 
        {/* Final CTA */}
         <section className="text-center mt-16 pt-12 border-t border-border/50">
             <h2 className="text-2xl font-semibold mb-4 text-secondary">Ready to Discuss Your Project?</h2>
             <p className="text-lg text-foreground/80 mb-6">Contact us for reliable, code-compliant plumbing and heating services in NYC.</p>
             <Button asChild size="lg" className="cta-button">
-                <Link href="/contact">Get Your Free Estimate Today</Link>
+                <Link href="/schedule">Get Your Free Estimate Today</Link>
             </Button>
         </section>
 
