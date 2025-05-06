@@ -25,10 +25,10 @@ export const metadata: Metadata = {
     siteName: SiteConfig.name,
     images: [
       {
-        url: `/og-image.png`, // Relative to metadataBase
+        url: `/og-image.png`, // Relative to metadataBase - Ensure this image exists in /public
         width: 1200,
         height: 630,
-        alt: `${SiteConfig.name} logo`,
+        alt: `${SiteConfig.name} logo and NYC skyline`, // More descriptive alt text
       },
     ],
   },
@@ -40,7 +40,7 @@ export const metadata: Metadata = {
     // creator: "@yourtwitterhandle", // Add Twitter handle if available
   },
   icons: {
-    icon: "/favicon.ico", // Relative to metadataBase
+    icon: "/favicon.ico", // Relative to metadataBase - Ensure this file exists in /public
     // shortcut: "/favicon-16x16.png",
     // apple: "/apple-touch-icon.png",
   },
@@ -57,11 +57,12 @@ export const metadata: Metadata = {
 const generateSchema = () => {
   const schema = {
     "@context": "https://schema.org",
-    "@type": "Plumber", // More specific type than LocalBusiness if appropriate
+    "@type": "Plumber", // Specific type for plumbing business
     "name": SiteConfig.name,
     "description": SiteConfig.description,
     "url": SiteConfig.url,
     "telephone": SiteConfig.phoneNumber,
+    "image": `${SiteConfig.url}/logo.png`, // Placeholder: Add logo.png to /public folder
     "address": {
       "@type": "PostalAddress",
       "streetAddress": SiteConfig.addressParts.streetAddress,
@@ -70,29 +71,41 @@ const generateSchema = () => {
       "postalCode": SiteConfig.addressParts.postalCode,
       "addressCountry": SiteConfig.addressParts.addressCountry
     },
-    "geo": { // Approximate coordinates if known, helpful for local SEO
+    "geo": { // Approximate coordinates for the Bronx address
       "@type": "GeoCoordinates",
-      // Replace with actual coordinates if available
-      // "latitude": "40.866657",
-      // "longitude": "-73.897000"
+      // Replace with actual coordinates if available and precise location is desired
+       "latitude": "40.866657", // Approximate for Grand Concourse
+       "longitude": "-73.897000" // Approximate for Grand Concourse
     },
-    "areaServed": SiteConfig.boroughs.map(borough => ({
-      "@type": "City",
-      "name": borough,
-      "sameAs": `https://en.wikipedia.org/wiki/${borough.replace(" ", "_")}` // Link to authoritative source if possible
-    })),
-    // Add image URL if a logo URL is defined
-    // "image": `${SiteConfig.url}/logo.png`,
-    // Define opening hours if available in SiteConfig
-    // "openingHours": SiteConfig.openingHours, // Assumes ISO 8601 format e.g., "Mo-Fr 09:00-17:00" or multiple entries
-    // Price range could be added if applicable, e.g., "$$"
+     "areaServed": SiteConfig.boroughs.map(borough => ({
+       "@type": "City",
+       "name": borough,
+       // Link to authoritative source (e.g., Wikipedia or NYC.gov page for the borough)
+       // Example using Wikipedia:
+       "sameAs": `https://en.wikipedia.org/wiki/${borough.replace(" ", "_").replace("The_","")}` // Basic example
+     })),
+    "openingHours": "Mo-Su 00:00-23:59", // Explicitly state 24/7 availability
+    "priceRange": "$$", // Optional: Indicate general price range (e.g., $, $$, $$$)
+    "hasOfferCatalog": { // Define services offered
+       "@type": "OfferCatalog",
+       "name": "Plumbing and Heating Services",
+       "itemListElement": [
+         // Add key services here
+         { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Boiler Repair & Installation" } },
+         { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Emergency Plumbing Services" } },
+         { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Fire Sprinkler Systems" } },
+         { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Drain Cleaning" } },
+         { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Heating System Repair" } },
+         // Add more services as needed
+       ]
+     }
   };
-  // If 24/7, explicitly state it
-  // schema.openingHours = "Mo-Su 00:00-23:59";
 
   return JSON.stringify(schema);
 };
 
+// Placeholder for your Google Analytics Tracking ID
+const GA_TRACKING_ID = 'G-XXXXXXXXXX'; // TODO: Replace with your actual GA4 Measurement ID
 
 export default function RootLayout({
   children,
@@ -107,7 +120,25 @@ export default function RootLayout({
           id="local-business-schema"
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: generateSchema() }}
+          strategy="afterInteractive" // Load schema after main content
         />
+        {/* Google Analytics */}
+        {process.env.NODE_ENV === 'production' && GA_TRACKING_ID !== 'G-XXXXXXXXXX' && (
+          <>
+            <Script
+              src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`}
+              strategy="afterInteractive" // Load GA after main content interactive
+            />
+            <Script id="google-analytics" strategy="afterInteractive">
+              {`
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+                gtag('config', '${GA_TRACKING_ID}');
+              `}
+            </Script>
+          </>
+        )}
         {/* Consider adding preconnect hints for fonts or external resources if needed */}
         {/* e.g., <link rel="preconnect" href="https://fonts.googleapis.com" /> */}
       </head>

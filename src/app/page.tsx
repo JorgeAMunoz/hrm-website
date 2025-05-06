@@ -8,9 +8,9 @@ import ContactForm from '@/components/contact-form';
 import { SiteConfig } from '@/config/site';
 
 export const metadata: Metadata = {
-  title: `NYC Plumbing & Heating Experts | 24/7 Service | ${SiteConfig.name}`,
-  description: `High Rise Mechanical provides expert plumbing and heating services across NYC (Bronx, Manhattan, Brooklyn, Queens, Staten Island). 24/7 emergency repairs, boiler service, leak detection, and more. Licensed & insured. Get a free estimate!`,
-  keywords: [...SiteConfig.keywords, "home plumbing NYC", "NYC heating company", "reliable plumber NYC", "free plumbing estimate"],
+  title: `NYC Plumbing & Heating Experts | 24/7 Emergency Service | ${SiteConfig.name}`,
+  description: `High Rise Mechanical: Your trusted, licensed NYC plumbing & heating experts serving all 5 boroughs. We offer 24/7 emergency repairs, boiler service, leak detection, fire sprinklers & more. Get a free estimate today!`, // Refined description
+  keywords: [...SiteConfig.keywords, "home plumbing NYC", "NYC heating company", "reliable plumber NYC", "free plumbing estimate", "emergency plumber NYC 24/7"], // Added more specific keyword
   alternates: {
     canonical: '/', // Explicitly set canonical for the homepage
   },
@@ -35,9 +35,10 @@ export default function Home() {
   return (
     <div className="flex flex-col">
       {/* Hero Section */}
-      <section className="bg-gradient-to-r from-secondary to-teal-blue-secondary-accent text-primary-foreground py-20 px-4 md:px-8 lg:px-16 text-center">
-        <div className="container mx-auto">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4 text-white">NYC Plumbing and Heating Experts</h1>
+       {/* Added curved bottom separator */}
+      <section className="relative bg-gradient-to-r from-secondary to-teal-blue-primary text-primary-foreground py-20 px-4 md:px-8 lg:px-16 text-center section-separator-curved-bottom">
+        <div className="container mx-auto relative z-10"> {/* Ensure content is above pseudo-element */}
+          <h1 className="text-4xl md:text-5xl font-bold mb-4 text-white text-outline">NYC Plumbing and Heating Experts</h1>
           <p className="text-xl md:text-2xl mb-8 text-white">Available 24/7 for Emergencies</p>
           <Button asChild size="lg" className="cta-button-accent">
             <a href={`tel:${SiteConfig.phoneNumber.replace(/\D/g, '')}`}>
@@ -49,7 +50,7 @@ export default function Home() {
       </section>
 
       {/* Intro Section */}
-      <section className="py-16 px-4 md:px-8 lg:px-16 bg-background">
+      <section className="relative py-16 px-4 md:px-8 lg:px-16 bg-background">
         <div className="container mx-auto text-center">
           <h2 className="text-3xl font-semibold mb-6 text-secondary">Your Trusted Partner in Plumbing & Heating</h2>
           <p className="text-lg text-foreground/80 max-w-3xl mx-auto mb-12">
@@ -58,43 +59,46 @@ export default function Home() {
 
           {/* Quick Info Grid */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto">
-            <div className="flex flex-col items-center">
+            <div className="flex flex-col items-center p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow bg-card border border-border/50">
               <MapPin className="w-10 h-10 mb-2 text-primary" />
-              <p className="font-medium text-secondary">All 5 Boroughs Served</p>
+              <p className="font-medium text-secondary text-sm text-center">All 5 Boroughs Served</p>
             </div>
-            <div className="flex flex-col items-center">
+            <div className="flex flex-col items-center p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow bg-card border border-border/50">
               <Zap className="w-10 h-10 mb-2 text-primary" />
-              <p className="font-medium text-secondary">24/7 Availability</p>
+              <p className="font-medium text-secondary text-sm text-center">24/7 Emergency Availability</p>
             </div>
-             <div className="flex flex-col items-center">
+             <div className="flex flex-col items-center p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow bg-card border border-border/50">
               <ShieldCheck className="w-10 h-10 mb-2 text-primary" />
-              <p className="font-medium text-secondary">Licensed & Insured</p>
+              <p className="font-medium text-secondary text-sm text-center">Licensed & Insured</p>
             </div>
-             <div className="flex flex-col items-center">
+             <div className="flex flex-col items-center p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow bg-card border border-border/50">
               <CheckCircle className="w-10 h-10 mb-2 text-primary" />
-              <p className="font-medium text-secondary">Free Estimates</p>
+              <p className="font-medium text-secondary text-sm text-center">Free Estimates Available</p>
             </div>
           </div>
         </div>
       </section>
 
       {/* Featured Services Section */}
-      <section className="py-16 px-4 md:px-8 lg:px-16 bg-muted/50">
-        <div className="container mx-auto">
+       {/* Added curved top separator */}
+      <section className="relative py-16 px-4 md:px-8 lg:px-16 bg-muted/50 section-separator-curved-top">
+        <div className="container mx-auto relative z-10"> {/* Ensure content is above pseudo-element */}
           <h2 className="text-3xl font-semibold text-center mb-12 text-secondary">Our Top Services</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
             {featuredServices.map((service) => (
-              <Card key={service.name} className="text-center shadow-md hover:shadow-lg transition-shadow duration-300 flex flex-col">
-                <CardHeader>
-                  <service.icon className="w-12 h-12 mx-auto mb-4 text-secondary-accent" />
-                  <CardTitle className="text-xl font-semibold text-secondary">{service.name}</CardTitle>
-                </CardHeader>
-                <CardContent className="flex-grow flex flex-col justify-between">
-                  <p className="text-foreground/70 mb-4">{service.description}</p>
-                  <Button asChild variant="outline" className="mt-auto border-primary text-primary hover:bg-primary/10">
-                    <Link href={service.link}>Learn More</Link>
-                  </Button>
-                </CardContent>
+              <Card key={service.name} className="text-center shadow-md hover:shadow-lg transition-shadow duration-300 flex flex-col bg-card border border-border/50">
+                 <CardHeader className="pb-4">
+                   <div className="mx-auto bg-primary/10 rounded-full p-3 w-fit mb-3">
+                     <service.icon className="w-8 h-8 text-primary" />
+                   </div>
+                   <CardTitle className="text-xl font-semibold text-secondary">{service.name}</CardTitle>
+                 </CardHeader>
+                 <CardContent className="flex-grow flex flex-col justify-between pt-0">
+                   <p className="text-foreground/70 mb-4 flex-grow">{service.description}</p>
+                   <Button asChild variant="outline" size="sm" className="mt-auto border-primary text-primary hover:bg-primary/10">
+                     <Link href={service.link}>Learn More</Link>
+                   </Button>
+                 </CardContent>
               </Card>
             ))}
           </div>
@@ -109,9 +113,9 @@ export default function Home() {
       {/* Emergency Service Callout */}
       <section className="py-16 px-4 md:px-8 lg:px-16 bg-destructive text-destructive-foreground">
         <div className="container mx-auto text-center">
-          <h2 className="text-3xl font-bold mb-4">Need Help Urgently?</h2>
+          <h2 className="text-3xl font-bold mb-4 text-outline-destructive">Need Help Urgently?</h2>
           <p className="text-xl mb-8">We offer 24/7 Emergency Plumbing and Heating Services across NYC.</p>
-          <Button asChild size="lg" variant="secondary" className="bg-white text-destructive hover:bg-gray-100">
+          <Button asChild size="lg" variant="secondary" className="bg-white text-destructive hover:bg-gray-100 font-semibold">
              <a href={`tel:${SiteConfig.phoneNumber.replace(/\D/g, '')}`}>
               <Phone className="mr-2 h-5 w-5" /> Call for Emergency Service
              </a>
@@ -127,7 +131,7 @@ export default function Home() {
           {/* Basic Testimonial Layout - A slider/carousel component would enhance this */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {testimonials.map((testimonial) => (
-              <Card key={testimonial.name} className="bg-card shadow-sm">
+              <Card key={testimonial.name} className="bg-card shadow-sm border border-border/50">
                 <CardContent className="pt-6">
                   <div className="flex items-center mb-2">
                     {[...Array(5)].map((_, i) => (
@@ -142,19 +146,19 @@ export default function Home() {
             ))}
           </div>
            {/* Add link to Google Reviews if available */}
-           {/*
-           <div className="text-center mt-12">
-             <Button variant="link" asChild>
-               <a href="YOUR_GOOGLE_REVIEWS_LINK" target="_blank" rel="noopener noreferrer">Read More Reviews on Google</a>
-             </Button>
-           </div>
-           */}
+           {SiteConfig.googleReviewsUrl && (
+             <div className="text-center mt-12">
+               <Button variant="link" asChild>
+                 <a href={SiteConfig.googleReviewsUrl} target="_blank" rel="noopener noreferrer">Read More Reviews on Google</a>
+               </Button>
+             </div>
+            )}
         </div>
       </section>
 
       {/* Contact Prompt Section */}
-      <section className="py-16 px-4 md:px-8 lg:px-16 bg-muted/50">
-        <div className="container mx-auto max-w-2xl text-center">
+      <section className="relative py-16 px-4 md:px-8 lg:px-16 bg-muted/50 section-separator-curved-top">
+        <div className="container mx-auto max-w-2xl text-center relative z-10">
            <h2 className="text-3xl font-semibold mb-6 text-secondary">Get a Free Estimate</h2>
            <p className="text-lg text-foreground/80 mb-8">
              Contact us today for a free, no-obligation quote on your plumbing or heating project.

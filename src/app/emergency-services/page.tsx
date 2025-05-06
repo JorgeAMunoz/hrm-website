@@ -9,7 +9,7 @@ import { SiteConfig } from '@/config/site';
 
 export const metadata: Metadata = {
   title: `24/7 Emergency Plumbing & Heating | NYC | ${SiteConfig.name}`,
-  description: `Immediate 24/7 emergency plumbing and heating response in NYC (Bronx, Manhattan, Brooklyn, Queens, Staten Island). Call ${SiteConfig.phoneNumber} for burst pipes, gas leaks, no heat/hot water, sewer backups & more.`,
+  description: `Immediate 24/7 emergency plumbing & heating response across NYC (Bronx, Manhattan, Brooklyn, Queens, Staten Island) from High Rise Mechanical. Call ${SiteConfig.phoneNumber} now for burst pipes, gas leaks, no heat/hot water, sewer backups & more. Fast, reliable service.`, // Refined description
   keywords: [
     ...SiteConfig.keywords,
     "24/7 plumber NYC",
@@ -21,6 +21,7 @@ export const metadata: Metadata = {
     "gas leak repair NYC",
     "urgent plumber NYC",
     "emergency boiler repair NYC",
+    "NYC emergency plumber phone", // Added specific keyword
   ],
    alternates: {
     canonical: '/emergency-services',
@@ -52,8 +53,8 @@ export default function EmergencyServicesPage() {
     <div className="container mx-auto py-16 px-4 md:px-8 lg:px-16">
        {/* Header Section */}
        <section className="text-center mb-16">
-         <AlertTriangle className="w-16 h-16 mx-auto mb-4 text-destructive" />
-         <h1 className="text-4xl md:text-5xl font-bold text-destructive mb-4">24/7 Emergency Plumbing & Heating</h1>
+         <AlertTriangle className="w-16 h-16 mx-auto mb-4 text-destructive animate-pulse" />
+         <h1 className="text-4xl md:text-5xl font-bold text-destructive mb-4 text-outline-destructive">24/7 Emergency Plumbing & Heating</h1>
          <p className="text-xl text-foreground/80 max-w-3xl mx-auto mb-8">
            Facing an urgent issue like a burst pipe, gas leak, or no heat? High Rise Mechanical provides immediate, reliable emergency service across all five boroughs of NYC, day or night.
          </p>
@@ -71,27 +72,29 @@ export default function EmergencyServicesPage() {
         <h2 className="text-3xl font-semibold text-center mb-12 text-secondary">Common Emergencies We Handle Immediately</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {emergencyScenarios.map((scenario) => (
-            <Card key={scenario.name} className="text-center border-destructive/50 shadow-md hover:shadow-lg transition-shadow bg-card">
-              <CardHeader>
-                <scenario.icon className="w-10 h-10 mx-auto mb-3 text-destructive" />
-                <CardTitle className="text-xl font-semibold text-secondary">{scenario.name}</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-foreground/70">{scenario.description}</p>
-              </CardContent>
-            </Card>
+             <Card key={scenario.name} className="text-center border-destructive/50 shadow-md hover:shadow-lg transition-shadow bg-card flex flex-col">
+               <CardHeader className="pb-4">
+                 <div className="mx-auto bg-destructive/10 rounded-full p-3 w-fit mb-3">
+                   <scenario.icon className="w-8 h-8 text-destructive" />
+                 </div>
+                 <CardTitle className="text-xl font-semibold text-secondary">{scenario.name}</CardTitle>
+               </CardHeader>
+               <CardContent className="pt-0 flex-grow">
+                 <p className="text-foreground/70">{scenario.description}</p>
+               </CardContent>
+             </Card>
           ))}
         </div>
       </section>
 
        {/* What to Do Before Calling Section */}
-      <section className="mb-16 bg-muted p-8 rounded-lg border border-border">
+      <section className="mb-16 bg-muted p-8 rounded-lg border border-border/50">
         <h2 className="text-3xl font-semibold text-center mb-8 text-secondary">
           <ShieldAlert className="inline-block w-8 h-8 mr-2 text-primary" /> Safety Steps Before We Arrive
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {safetyTips.map((tip) => (
-            <div key={tip.title} className="flex items-start space-x-3">
+            <div key={tip.title} className="flex items-start space-x-3 p-4 bg-background rounded shadow-sm">
               <Info className="w-5 h-5 mt-1 text-primary flex-shrink-0" />
               <div>
                 <h3 className="font-medium text-secondary">{tip.title}</h3>
@@ -106,7 +109,7 @@ export default function EmergencyServicesPage() {
       </section>
 
        {/* Final Call to Action */}
-      <section className="text-center border-t pt-12 mt-12 border-border">
+      <section className="text-center border-t pt-12 mt-12 border-border/50">
          <h2 className="text-2xl font-semibold mb-4 text-secondary">Don't Delay - Get Professional Help Now!</h2>
          <p className="text-lg text-foreground/80 mb-6 max-w-2xl mx-auto">Our expert technicians are on standby 24/7, ready to resolve your plumbing or heating emergency quickly and effectively.</p>
          <Button asChild size="lg" className="cta-button-accent text-lg px-8 py-4 shadow-lg hover:shadow-xl transition-shadow">
