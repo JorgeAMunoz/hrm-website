@@ -2,8 +2,8 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-// Corrected icons: Replaced Water with Droplet, added Bath, Snowflake
-import { Phone, AlertTriangle, ShieldAlert, Flame, Info, Droplet, Bath, Snowflake } from 'lucide-react';
+// Corrected icons: Replaced Water with Droplet, added Bath, Snowflake, imported Heater
+import { Phone, AlertTriangle, ShieldAlert, Flame, Info, Droplet, Bath, Snowflake, Heater } from 'lucide-react';
 import { SiteConfig } from '@/config/site';
 
 
@@ -127,4 +127,3 @@ export default function EmergencyServicesPage() {
     </div>
   );
 }
-
