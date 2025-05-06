@@ -1,10 +1,11 @@
+
 import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { MapPin, Award, Users, Building, CheckSquare } from 'lucide-react';
 import { SiteConfig } from '@/config/site';
-import { ServiceAreaMap } from '@/components/service-area-map'; // Import ServiceAreaMap
+import { ServiceAreaMap } from '@/components/service-area-map'; // Correct import path
 
 
 export const metadata: Metadata = {
