@@ -1,6 +1,7 @@
+'use client'; // Add 'use client' because we're using hooks
+
 import Link from 'next/link';
-import Image from 'next/image';
-import { Button, buttonVariants } from '@/components/ui/button'; // Import buttonVariants
+import { Button, buttonVariants } from '@/components/ui/button';
 import { Phone, Menu } from 'lucide-react';
 import { NavigationMenu } from '@/components/layout/navigation-menu';
 import { SiteConfig } from '@/config/site';
@@ -11,12 +12,22 @@ import {
   SheetHeader,
   SheetTitle,
   SheetTrigger,
-  SheetClose, // Import SheetClose
-} from "@/components/ui/sheet"
-import { cn } from '@/lib/utils'; // Import cn
+  SheetClose,
+} from "@/components/ui/sheet";
+import { cn } from '@/lib/utils';
+import { usePathname } from 'next/navigation'; // Import usePathname
+import { useState, useEffect } from 'react'; // Import useState and useEffect
 
 
 export function Header() {
+  const pathname = usePathname(); // Get current pathname
+  const [isClient, setIsClient] = useState(false); // Track client-side mount
+
+  useEffect(() => {
+    setIsClient(true); // Set to true after component mounts
+  }, []);
+
+
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-16 items-center justify-between">
@@ -61,16 +72,21 @@ export function Header() {
                    </SheetHeader>
                    <nav className="flex flex-col space-y-3">
                      {SiteConfig.mainNav.map((item) => (
-                         <SheetClose key={item.href} asChild> {/* Wrap Link with SheetClose */}
+                         <SheetClose key={item.href} asChild>
                            <Link
                              href={item.href}
-                             className="text-lg font-medium text-secondary hover:text-primary transition-colors py-1"
+                             className={cn(
+                               'text-lg font-medium transition-colors hover:text-primary py-1',
+                               // Apply active class only on the client and when pathname matches
+                               isClient && pathname === item.href ? 'text-primary' : 'text-secondary'
+                             )}
+                             aria-current={isClient && pathname === item.href ? 'page' : undefined} // Add aria-current for accessibility
                            >
                              {item.title}
                            </Link>
                         </SheetClose>
                      ))}
-                      {/* Mobile Call Button - Fixed nested asChild */}
+                      {/* Mobile Call Button */}
                       <SheetClose asChild>
                          <a
                             href={`tel:${SiteConfig.phoneNumber.replace(/\D/g, '')}`}
