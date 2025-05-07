@@ -23,7 +23,7 @@ const nextConfig: NextConfig = {
         pathname: '/logo.png',
       },
        { // Allow loading the og image from the domain
-        protocol: 'https://',
+        protocol: 'https', // Corrected protocol value
         hostname: 'highrisemechanical.com', // Replace with your actual domain if different
         port: '',
         pathname: '/og-image.png',
